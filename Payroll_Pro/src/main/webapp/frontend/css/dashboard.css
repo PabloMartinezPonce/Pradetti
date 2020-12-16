@@ -1,0 +1,1825 @@
+/* ==============================================================
+   =================== Created by: PabloSagoz =================== 
+   ===================== Date: November 2016 ====================
+   ============================================================== */
+
+/* ================================================== Base structure ============================================= */
+@import 'https://fonts.googleapis.com/css?family=Exo|Roboto';
+h1,h2,h3,h4,h5,h6,a,footer{
+  font-family: 'Exo', sans-serif;
+}
+html, body {
+    height:100%;
+}
+body {
+    font-family: 'Roboto', sans-serif;    
+    padding-top: 60px;
+    background-color: WhiteSmoke ;
+    font-size: 16px;
+    -webkit-transition: all 700ms linear;
+    -moz-transition: all 700ms linear;
+    -ms-transition: all 700ms linear;
+    -o-transition: all 700ms linear;
+    transition: all 700ms linear;
+}
+.navbar{
+    min-height: 60px;
+    background-color: rgba(67,64,65,0.95);
+    z-index: 2708;
+}
+.sub-header {
+  padding-bottom: 10px;
+  text-align: center;
+  text-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+}
+.navbar-fixed-top {
+  border: 0;
+  padding-top: 5px;
+}
+.navbar-toggle{
+    background-color: whitesmoke;
+    border: 1px solid whitesmoke;
+    color: rgba(67,64,65,0.95);
+}
+#bigMenu{
+    cursor: pointer;
+    margin-left: 0px;
+    padding: 0px;
+    width: 270px;
+    -webkit-transition: all 700ms linear;
+    -moz-transition: all 700ms linear;
+    -ms-transition: all 700ms linear;
+    -o-transition: all 700ms linear;
+    transition: all 700ms linear;
+}
+#bigMenu:focus b{
+    color: whitesmoke;
+}
+#logoHeader{
+    height: 50px;
+    width: 50px;
+    margin: 0px;
+    padding: 0px;
+    line-height: 0px;
+    position: relative;
+    float: left;
+    background-color: whitesmoke;    
+    border-radius: 15%;
+}
+#bigMenu b{
+    position: relative;
+    float: right;
+    width: auto;
+    margin: 5% 8px;
+    padding: 0px;
+    font-size: 27px;
+    margin-right: 90px;
+    -webkit-transition: all 500ms linear;
+    -moz-transition: all 500ms linear;
+    -ms-transition: all 500ms linear;
+    -o-transition: all 500ms linear;
+    transition: all 500ms linear;
+}
+.hidelogo{
+    text-shadow: 0px 0px 8px;    
+}
+.sidebar {
+    margin-left: 0px;
+    position: fixed;
+    top: 60px;
+    bottom: 0;
+    left: 0;
+    z-index: 5000;
+    display: block;
+    padding: 27px;
+    width: 230px;
+    height: 360px;
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 0px;
+    display: none;
+}
+.sideMenu{
+    display: none;
+    height: 27px;
+    width: 180px;
+}
+.nav-sidebar {
+ background-color: rgba(67,64,65,0.95);
+  margin-bottom: 4px;
+  border-radius: 0px;
+    width: 180px;
+ -webkit-transition: all 100ms linear;
+ -moz-transition: all 100ms linear;
+ -ms-transition: all 100ms linear;
+ -o-transition: all 100ms linear;
+ transition: all 100ms linear;
+}
+.nav-sidebar:hover{
+    background-color: white;
+    border: none;
+    border-radius: 0px 0px 10px 10px;
+}
+.nav-sidebar > li > a {
+    padding-left: 27px;
+    padding-top: 5px;
+    text-align: justify;
+    background-color: transparent;
+    color: whitesmoke;
+    border: none;
+    font-size: 15px;
+    -webkit-transition: all 100ms linear;
+    -moz-transition: all 100ms linear;
+    -ms-transition: all 100ms linear;
+    -o-transition: all 100ms linear;
+    transition: all 100ms linear;
+}
+.nav-sidebar > li > a:hover {
+    font-size: 15px;
+    color: rgba(67,64,65,0.95);
+    border: none;
+    border-bottom: 3px solid rgba(67,64,65,0.95); 
+}
+.nav-sidebar:last-of-type{
+  border-radius: 0px 0px 15px 15px;
+}
+.nav-sidebar:first-of-type{
+  border-radius: 15px 15px 0px 0px;
+}
+#logoFooter{
+    z-index: 3000;
+    margin-left: 45px;
+    margin-top: 10px;
+    width: 90px;
+    height: 90px;
+    display: none;
+    background-color: none;
+    border-radius: 15%;
+}
+/* =================================================== Personal ================================================  */
+.navbar>.container .navbar-brand, .navbar>.container-fluid .navbar-brand {
+    margin-left: 8px;
+}
+.navbar-brand {
+    float: left;
+    height: 50px;
+    padding: 10px 15px;
+    font-size: 27px;
+}
+.nav>li>a:focus, .nav>li>a:hover {
+    text-decoration: none;
+    background-color: transparent;
+}
+.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
+    background-color: transparent;
+    border-color: white;
+    text-decoration: none;
+}
+.btn-default {
+    color: #333;
+    background-color: white;
+    border-color: rgba(67,64,65,0.5);
+}
+.btn-default:active,.btn-default:active:focus, .btn-default:active:hover,.open>.dropdown-toggle.btn-default:focus, .open>.dropdown-toggle.btn-default:hover{
+    color: whitesmoke;
+    background-color: rgba(67,64,65,1);
+    border-color: white;     
+}
+.btn-default.focus, .btn-default:focus {
+    color: whitesmoke;
+    background-color: rgba(67,64,65,0.8);
+    border-color: rgba(67,64,65,1);
+}
+a {
+    color: whitesmoke;
+    text-decoration: none;
+}
+a:hover {
+    color: whitesmoke;
+    text-decoration: underline;
+}
+a:visited {
+    text-decoration: none;
+}
+.sectionLinkNotifications:visited{
+    color: black;
+    text-decoration: none;    
+}
+.badge{
+    background-color: rgb(210,3,44);
+}
+.dropdown-menu {
+    background-color: rgba(67,64,65,1);
+}
+.dropdown-menu>li>a {
+    color: whitesmoke;
+ -webkit-transition: all 100ms linear;
+ -moz-transition: all 100ms linear;
+ -ms-transition: all 100ms linear;
+ -o-transition: all 100ms linear;
+ transition: all 100ms linear;
+}
+.dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover {
+    color: rgb(67,64,65);
+    text-decoration: none;
+    background-color: whitesmoke;
+    text-decoration: underline;
+}
+/* ================================================== Main content =============================================  */
+.main {
+  padding: 20px;
+}
+.main .page-header {
+    margin-top: -70px;
+    position: fixed;
+    z-index: 3000;
+}
+#sidebody{
+    margin-bottom: 50px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+#titlePage{
+    margin-left: 27%;
+    color: whitesmoke;
+    font-weight: 900;
+    cursor: default;
+}
+.page-header {
+    padding-bottom: 0px;
+    margin: 40px 20px;
+    border: none;
+}
+#frameContainer{
+    border: 0px solid black;
+    height: auto;
+}
+/* =================================================== bodyNotifications ======================================== */
+/* xtraSmall devices (phones, 767px and below) */
+@media (max-width: 767px) {
+    #titlePage{
+        font-size: 27px;
+    }
+    .h2, h2 {
+        font-size: 21px;
+    }
+    #bodyNotifications{
+        width: 100%;
+        height: 100%;
+        padding: 8%;
+        -webkit-transition: all 700ms linear;
+        -moz-transition: all 700ms linear;
+        -ms-transition: all 700ms linear;
+        -o-transition: all 700ms linear;
+        transition: all 700ms linear;
+    }
+    .containerNotifications{
+        width: 100%;
+        height: 100px;
+        padding: 0;
+        margin: 15px 0px;
+        border: 1px solid rgba(149,146,152,1);
+        background-color: white;
+        -webkit-box-shadow: 2px -2px 10px 2px rgba(0,0,0,0.75);
+        -moz-box-shadow: 2px -2px 10px 2px rgba(0,0,0,0.75);
+        box-shadow: 2px -2px 10px 2px rgba(0,0,0,0.75);
+    }
+    .headerNotifications{
+        width: 33%;
+        height: 100px;
+        padding: 0% 5%;
+        margin: 0;
+        background-color: whitesmoke;
+        border-right: 1px solid rgba(149,146,152,0.8);
+        position: relative;
+        float: left;
+        clear: both;
+        overflow: hidden;
+    }
+    .badgeNotifications{
+        border-radius: 45%;
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        position: relative;
+        float: right;
+        margin-top: -75px;
+        margin-right: 25px;
+        background-color: rgba(67,64,65,0.8);
+        color: white;
+        padding-top: 12%;
+        border: 1px solid rgb(67,64,65);
+        -webkit-transition: all 100ms linear;
+        -moz-transition: all 100ms linear;
+        -ms-transition: all 100ms linear;
+        -o-transition: all 100ms linear;
+        transition: all 100ms linear;
+    }
+    .badgeNotifications:hover{
+        -webkit-box-shadow: 2px 2px 10px 2px rgba(0,0,0,0.75);
+        -moz-box-shadow: 2px 2px 10px 2px rgba(0,0,0,0.75);
+        box-shadow: 2px 2px 10px 2px rgba(0,0,0,0.75);
+    }
+    .numberNotifications{
+        width: 100px;
+        height: 100px;
+        background-color: whitesmoke;
+        margin-bottom: 100px;
+        -webkit-transition: all 100ms linear;
+        -moz-transition: all 100ms linear;
+        -ms-transition: all 100ms linear;
+        -o-transition: all 100ms linear;
+        transition: all 100ms linear;
+        margin-left: -10px;
+    }
+    .numberLinkNotifications{
+        cursor: pointer;
+    }    
+    .imgsMdls{
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+    }
+    .numberLinkNotifications:hover{
+        text-decoration: none;
+        color: white;
+    }
+    .footerNotifications{
+        width: 67%;
+        height: 100px;
+        position: relative;
+        float: right;
+        z-index: 15;
+    }
+    .sectionNotifications{
+        font-size: 16px;
+        width: 100%;
+        height: 25%;
+        padding: 4px;
+        text-align: center;
+        background-color: whitesmoke;
+        border-bottom: 1px solid rgba(149,146,152,1); 
+        -webkit-transition: all 100ms linear;
+        -moz-transition: all 100ms linear;
+        -ms-transition: all 100ms linear;
+        -o-transition: all 100ms linear;
+        transition: all 100ms linear;   
+    }
+    .sectionNotifications:hover,.descNotifications:hover{
+        font-weight: 800;
+        width: 110%;
+        margin-left: 0px;
+        -webkit-box-shadow: 0px 9px 10px 5px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 9px 10px 5px rgba(0,0,0,0.75);
+        box-shadow: 0px 9px 10px 5px rgba(0,0,0,0.75);
+    }
+    .sectionLinkNotifications,.descriptionLinkNotifications{
+        color: rgb(67,64,65);
+        cursor: pointer;
+        text-decoration: none;
+        -webkit-transition: all 100ms linear;
+        -moz-transition: all 100ms linear;
+        -ms-transition: all 100ms linear;
+        -o-transition: all 100ms linear;
+        transition: all 100ms linear;
+        font-weight: 900;
+
+    }
+    .sectionLinkNotifications:hover,.descriptionLinkNotifications:hover{
+        text-decoration: none;
+        color: rgb(67,64,65);
+    }
+    .descNotifications{
+        width: 100%;
+        height: 75%;
+        padding: 8px;
+        margin: 0px;
+        text-align: center;
+        background-color: whitesmoke;
+        -webkit-transition: all 100ms linear;
+        -moz-transition: all 100ms linear;
+        -ms-transition: all 100ms linear;
+        -o-transition: all 100ms linear;
+        transition: all 100ms linear;   
+    }
+    .descriptionNotifications{
+        font-size: 18px;
+    }
+}
+/* xxtraSmall devices (phones, 600px and below) */
+@media (max-width: 600px) {
+    #bodyNotifications{
+        padding: 0%;    
+    }    
+    .descNotifications:hover{        
+        font-size: 16px;
+        font-weight: 800;
+        margin-left: -8px;
+        -webkit-box-shadow: 0px 9px 10px 5px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 9px 10px 5px rgba(0,0,0,0.75);
+        box-shadow: 0px 9px 10px 5px rgba(0,0,0,0.75);
+    }
+}
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    #bodyNotifications{
+        width: 100%;
+        height: 100%;
+        -webkit-transition: all 700ms linear;
+        -moz-transition: all 700ms linear;
+        -ms-transition: all 700ms linear;
+        -o-transition: all 700ms linear;
+        transition: all 700ms linear;
+        padding: 0% 4%;
+    }
+    .containerNotifications{
+        width: 150px;
+        height: 230px;
+        padding: 0;
+        margin: 8px 8px;
+        border: 1px solid rgba(149,146,152,1);
+        background-color: whitesmoke;
+        -webkit-box-shadow: 2px -2px 10px 2px rgba(0,0,0,0.75);
+        -moz-box-shadow: 2px -2px 10px 2px rgba(0,0,0,0.75);
+        box-shadow: 2px -2px 10px 2px rgba(0,0,0,0.75);
+        position: relative;
+        float: left;
+    }
+    .headerNotifications{
+        width: 100%;
+        height: 60%;
+        margin: 0;
+        padding: 17% 25%;
+        background-color: whitesmoke;
+        border-bottom: 1px solid rgba(149,146,152,0.8);
+    }
+    .badgeNotifications{
+        border-radius: 45%;
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        position: relative;
+        float: right;
+        margin-bottom: -30px;
+        margin-right: -25px;
+        margin-top: -15px;
+        padding-top: 15px;
+        background-color: rgb(67,64,65);
+        color: white;
+        -webkit-transition: all 100ms linear;
+        -moz-transition: all 100ms linear;
+        -ms-transition: all 100ms linear;
+        -o-transition: all 100ms linear;
+        transition: all 100ms linear;
+    }
+    .badgeNotifications:hover{
+        -webkit-box-shadow: 2px 2px 10px 2px rgba(0,0,0,0.75);
+        -moz-box-shadow: 2px 2px 10px 2px rgba(0,0,0,0.75);
+        box-shadow: 2px 2px 10px 2px rgba(0,0,0,0.75);
+    }
+    .numberNotifications{
+        width: 100%;
+        height: 100%;
+        background-color: whitesmoke;
+        margin-bottom: 100px;
+        -webkit-transition: all 100ms linear;
+        -moz-transition: all 100ms linear;
+        -ms-transition: all 100ms linear;
+        -o-transition: all 100ms linear;
+        transition: all 100ms linear;
+    }
+    .numberLinkNotifications{
+        font-size: 27px;
+        font-weight: 900;
+        position: absolute;
+        top: 30%; 
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        text-decoration: none;
+        cursor: pointer;
+    }    
+    .imgsMdls{
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+    }
+    .numberLinkNotifications:hover{
+        text-decoration: none;
+        color: white;
+    }
+    .footerNotifications{
+        width: 100%;
+        height: 40%;
+    }
+    .sectionNotifications{
+        font-size: 16px;
+        width: 100%;
+        height: auto;
+        padding: 4px;
+        text-align: center;
+        background-color: whitesmoke;
+        border-bottom: 1px solid rgba(149,146,152,1); 
+        -webkit-transition: all 100ms linear;
+        -moz-transition: all 100ms linear;
+        -ms-transition: all 100ms linear;
+        -o-transition: all 100ms linear;
+        transition: all 100ms linear;   
+    }
+    .descNotifications:hover{
+        font-size: 18px;
+        margin-left: -10px;
+        -webkit-box-shadow: 0px 9px 10px 5px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 9px 10px 5px rgba(0,0,0,0.75);
+        box-shadow: 0px 9px 10px 5px rgba(0,0,0,0.75);
+    }
+    .sectionLinkNotifications,.descriptionLinkNotifications{
+        color: rgb(67,64,65);
+        cursor: pointer;
+        text-decoration: none;
+        -webkit-transition: all 100ms linear;
+        -moz-transition: all 100ms linear;
+        -ms-transition: all 100ms linear;
+        -o-transition: all 100ms linear;
+        transition: all 100ms linear;
+        font-weight: 900;
+
+    }
+    .sectionLinkNotifications:hover,.descriptionLinkNotifications:hover{
+        text-decoration: none;
+        color: rgb(67,64,65);
+    }
+    .descNotifications{
+        width: 100%;
+        height: auto;
+        padding: 3px;
+        text-align: center;
+        background-color: whitesmoke;
+        -webkit-transition: all 100ms linear;
+        -moz-transition: all 100ms linear;
+        -ms-transition: all 100ms linear;
+        -o-transition: all 100ms linear;
+        transition: all 100ms linear;   
+    }
+    .descriptionNotifications{
+        font-size: 16px;
+        vertical-align: middle;
+    }
+}
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    #bodyNotifications{
+        width: 100%;
+        height: 100%;
+        -webkit-transition: all 700ms linear;
+        -moz-transition: all 700ms linear;
+        -ms-transition: all 700ms linear;
+        -o-transition: all 700ms linear;
+        transition: all 700ms linear;
+        padding: 0px 8%;
+    }
+    .containerNotifications{
+        width: 150px;
+        height: 230px;
+        padding: 0;
+        margin: 8px 8px;
+        border: 1px solid rgba(149,146,152,1);
+        background-color: whitesmoke;
+        -webkit-box-shadow: 2px -2px 10px 2px rgba(0,0,0,0.75);
+        -moz-box-shadow: 2px -2px 10px 2px rgba(0,0,0,0.75);
+        box-shadow: 2px -2px 10px 2px rgba(0,0,0,0.75);
+        position: relative;
+        float: left;
+    }
+    .headerNotifications{
+        width: 100%;
+        height: 60%;
+        margin: 0;
+        padding: 17% 25%;
+        background-color: whitesmoke;
+        border-bottom: 1px solid rgba(149,146,152,0.8);
+    }
+    .badgeNotifications{
+        border-radius: 45%;
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        position: relative;
+        float: right;
+        margin-bottom: -30px;
+        margin-right: -25px;
+        margin-top: -15px;
+        padding-top: 15px;
+        background-color: rgb(67,64,65);
+        color: white;
+        -webkit-transition: all 100ms linear;
+        -moz-transition: all 100ms linear;
+        -ms-transition: all 100ms linear;
+        -o-transition: all 100ms linear;
+        transition: all 100ms linear;
+    }
+    .badgeNotifications:hover{
+        -webkit-box-shadow: 2px 2px 10px 2px rgba(0,0,0,0.75);
+        -moz-box-shadow: 2px 2px 10px 2px rgba(0,0,0,0.75);
+        box-shadow: 2px 2px 10px 2px rgba(0,0,0,0.75);
+    }
+    .numberNotifications{
+        width: 100%;
+        height: 100%;
+        background-color: whitesmoke;
+        margin-bottom: 100px;
+        -webkit-transition: all 100ms linear;
+        -moz-transition: all 100ms linear;
+        -ms-transition: all 100ms linear;
+        -o-transition: all 100ms linear;
+        transition: all 100ms linear;
+    }
+    .numberLinkNotifications{
+        font-size: 27px;
+        font-weight: 900;
+        position: absolute;
+        top: 30%; 
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: white;
+        text-decoration: none;
+        cursor: pointer;
+    }    
+    .imgsMdls{
+        height: 100px;
+        width: 100px;
+        border-radius: 50%;
+    }
+    .numberLinkNotifications:hover{
+        text-decoration: none;
+        color: white;
+    }
+    .footerNotifications{
+        width: 100%;
+        height: 40%;
+    }
+    .sectionNotifications{
+        font-size: 16px;
+        width: 100%;
+        height: auto;
+        padding: 4px;
+        text-align: center;
+        background-color: whitesmoke;
+        border-bottom: 1px solid rgba(149,146,152,1); 
+        -webkit-transition: all 100ms linear;
+        -moz-transition: all 100ms linear;
+        -ms-transition: all 100ms linear;
+        -o-transition: all 100ms linear;
+        transition: all 100ms linear;   
+    }
+    .descNotifications:hover{
+        font-size: 18px;
+        margin-left: -10px;
+        -webkit-box-shadow: 0px 9px 10px 5px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 9px 10px 5px rgba(0,0,0,0.75);
+        box-shadow: 0px 9px 10px 5px rgba(0,0,0,0.75);
+    }
+    .sectionLinkNotifications,.descriptionLinkNotifications{
+        color: rgb(67,64,65);
+        cursor: pointer;
+        text-decoration: none;
+        -webkit-transition: all 100ms linear;
+        -moz-transition: all 100ms linear;
+        -ms-transition: all 100ms linear;
+        -o-transition: all 100ms linear;
+        transition: all 100ms linear;
+        font-weight: 900;
+
+    }
+    .sectionLinkNotifications:hover,.descriptionLinkNotifications:hover{
+        text-decoration: none;
+        color: rgb(67,64,65);
+    }
+    .descNotifications{
+        width: 100%;
+        height: auto;
+        padding: 3px;
+        text-align: center;
+        background-color: whitesmoke;
+        -webkit-transition: all 100ms linear;
+        -moz-transition: all 100ms linear;
+        -ms-transition: all 100ms linear;
+        -o-transition: all 100ms linear;
+        transition: all 100ms linear;   
+    }
+    .descriptionNotifications{
+        font-size: 16px;
+        vertical-align: middle;
+    }    
+    #sidebody-bg-img{
+        width: 100%;
+        height: 25em;
+        background-image: url('../img/logo.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        padding: 0px;
+        margin: 0px;
+        background-position: 100% 100%;
+    }
+}
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+#bodyNotifications{
+    width: 100%;
+    height: 100%;
+    -webkit-transition: all 700ms linear;
+    -moz-transition: all 700ms linear;
+    -ms-transition: all 700ms linear;
+    -o-transition: all 700ms linear;
+    transition: all 700ms linear;
+    padding: 0px 0px;
+    padding-left: 4%;
+}
+.containerNotifications{
+    width: 150px;
+    height: 230px;
+    padding: 0;
+    margin: 8px 27px;
+    border: 1px solid rgba(149,146,152,1);
+    background-color: whitesmoke;
+    -webkit-box-shadow: 2px -2px 10px 2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px -2px 10px 2px rgba(0,0,0,0.75);
+    box-shadow: 2px -2px 10px 2px rgba(0,0,0,0.75);
+    position: relative;
+    float: left;
+}
+.headerNotifications{
+    width: 100%;
+    height: 60%;
+    margin: 0;
+    padding: 15% 23%;
+    background-color: whitesmoke;
+    border-bottom: 1px solid rgba(149,146,152,0.8);
+}
+.badgeNotifications{
+    border-radius: 45%;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    position: relative;
+    float: right;
+    margin-bottom: -30px;
+    margin-right: -25px;
+    margin-top: -15px;
+    padding-top: 15px;
+    background-color: rgb(67,64,65);
+    color: white;
+    -webkit-transition: all 100ms linear;
+    -moz-transition: all 100ms linear;
+    -ms-transition: all 100ms linear;
+    -o-transition: all 100ms linear;
+    transition: all 100ms linear;
+}
+.badgeNotifications:hover{
+    -webkit-box-shadow: 2px 2px 10px 2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 2px 10px 2px rgba(0,0,0,0.75);
+    box-shadow: 2px 2px 10px 2px rgba(0,0,0,0.75);
+}
+.numberNotifications{
+    width: 100%;
+    height: 100%;
+    background-color: whitesmoke;
+    margin-bottom: 100px;
+}
+.numberLinkNotifications{
+    font-size: 27px;
+    font-weight: 900;
+    position: absolute;
+    top: 30%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 50%;
+}
+.imgsMdls{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+}
+.numberLinkNotifications:hover{
+    text-decoration: none;
+    color: white;
+}
+.footerNotifications{
+    width: 100%;
+    height: 40%;
+}
+.sectionNotifications{
+    font-size: 16px;
+    width: 100%;
+    height: auto;
+    padding: 4px;
+    text-align: center;
+    background-color: whitesmoke;
+    border-bottom: 1px solid rgba(149,146,152,1); 
+    -webkit-transition: all 100ms linear;
+    -moz-transition: all 100ms linear;
+    -ms-transition: all 100ms linear;
+    -o-transition: all 100ms linear;
+    transition: all 100ms linear;   
+}
+.descNotifications:hover{
+    font-size: 18px;
+    margin-left: -10px;
+    -webkit-box-shadow: 0px 9px 10px 5px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 9px 10px 5px rgba(0,0,0,0.75);
+    box-shadow: 0px 9px 10px 5px rgba(0,0,0,0.75);
+}
+.sectionLinkNotifications,.descriptionLinkNotifications{
+    color: rgb(67,64,65);
+    cursor: pointer;
+    text-decoration: none;
+}
+.descNotifications{
+    width: 100%;
+    height: auto;
+    padding: 3px;
+    text-align: center;
+    background-color: whitesmoke;
+    -webkit-transition: all 100ms linear;
+    -moz-transition: all 100ms linear;
+    -ms-transition: all 100ms linear;
+    -o-transition: all 100ms linear;
+    transition: all 100ms linear;   
+}
+.descriptionNotifications{
+    font-size: 16px;
+    vertical-align: middle;
+}
+
+#sidebody-bg-img{
+    width: 100%;
+    height: 30em;
+    background-image: url('../img/logo.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 0px;
+    margin: 0px;
+    background-position: 100% 100%;
+}
+}
+/* xLarge devices (large desktops, 1200px and up) */
+@media (min-width: 1367px) {
+    #bodyNotifications{
+        height: 100%;
+        -webkit-transition: all 700ms linear;
+        -moz-transition: all 700ms linear;
+        -ms-transition: all 700ms linear;
+        -o-transition: all 700ms linear;
+        transition: all 700ms linear;
+        padding: 1% 20%;
+    }
+    .containerNotifications{
+        width: 150px;
+        height: 230px;
+        padding: 0;
+        margin: 16px 16px;
+        border: 1px solid rgba(149,146,152,1);
+        background-color: whitesmoke;
+        -webkit-box-shadow: 2px -2px 10px 2px rgba(0,0,0,0.75);
+        -moz-box-shadow: 2px -2px 10px 2px rgba(0,0,0,0.75);
+        box-shadow: 2px -2px 10px 2px rgba(0,0,0,0.75);
+        position: relative;
+        float: left;
+    }
+#sidebody-bg-img{
+    width: 100%;
+    height: 50em;
+    background-image: url('../img/logo.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 0px;
+    margin: 0px;
+    background-position: 100% 100%;
+}
+}
+/* ========================================================= Footer ================================================ */
+footer{
+    position: fixed;
+    bottom: 0px;
+    display: block;
+    width: 100%;
+    text-align: center;
+    height: 50px;
+    z-index: 1500;
+    color: whitesmoke;
+    background-color: rgba(67,64,65,0.95);
+    padding: 1%;
+    font-size:18px; 
+}
+.controlsUp{
+    position: relative;
+    float: right;
+}
+.input-group-addon {
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1;
+    color: white;
+    text-align: center;
+    background-color: #555;
+    border: 1px solid #555;
+    border-radius: 4px;
+    font-family: 'Exo', sans-serif;
+}
+.selectAction{
+    clear: both;
+    text-align: center;
+    padding: 8px;
+    color: rgba(210,3,44,0.8);
+    text-decoration: underline;
+}
+/* ================================================== floatNotifications =========================================== */
+#floatNotifications{   
+    background-color: rgba(67,64,65,0.45);
+    padding: 8px;
+    border-radius:  0px 0px 0px 10px;
+    max-width: 340px;
+    top: 60px;
+    right: 0px;
+    position: fixed;
+    z-index: 2708;
+    display: none;
+}
+.containerFloatNotifications{
+    position: relative;
+    float: left;
+    width: 60px;
+    height: 60px;
+    background-color: whitesmoke;
+    border-radius: 50%;
+    margin: 4px 2px;
+    overflow: hidden;
+}
+.borderFloatNotifications{
+    width: 60px;
+    height: 60px;    
+}
+.numberFloatNotifications{
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    vertical-align: middle;
+}
+.numberIDFloatNotifications{
+    font-weight: 800;
+    width: 60px;
+    height: 60px;
+    position: relative;
+    float: left;
+    bottom: -65%;
+    left: 0%;
+    background-color: rgba(67,64,65,0.5);
+    border-radius: 25%;
+    -webkit-transition: all 100ms linear;
+    -moz-transition: all 100ms linear;
+    -ms-transition: all 100ms linear;
+    -o-transition: all 100ms linear;
+    transition: all 100ms linear;
+}
+.numberIDFloatNotifications:hover,.numberIDFloatNotifications:focus,.numberIDFloatNotifications:visited{
+    text-decoration: none;
+}
+.numberFloatNotifications:hover>.numberIDFloatNotifications{
+    bottom: -25%;
+    padding-top: 20%;
+    border-radius: 45%;
+    background-color: rgba(67,64,65,0.9);
+}
+.badgeAltasSolicitadas{
+    background-image: url('../img/AltasSolicitadas.png');
+    background-origin: content-box;
+    background-position: center;
+    background-size: 70% 70%;
+    background-repeat: no-repeat;
+}
+.badgeBajasSolicitadas{
+    background-image: url('../img/bajasSolicitas.png');
+    background-origin: content-box;
+    background-position: center;
+    background-size: 70% 70%;
+    background-repeat: no-repeat;
+}
+.badgeExpedientesPorCompletar{
+    background-image: url('../img/ExpedientesPorCompletar.png');
+    background-origin: content-box;
+    background-position: center;
+    background-size: 70% 70%;
+    background-repeat: no-repeat;
+}
+.badgeContratosPorVencer{
+    background-image: url('../img/ContratosPorVencer.png');
+    background-origin: content-box;
+    background-position: center;
+    background-size: 70% 70%;
+    background-repeat: no-repeat;
+}
+.badgeExpedientesConObservaciones{
+    background-image: url('../img/ExpedientesConObservaciones.png');
+    background-origin: content-box;
+    background-position: center;
+    background-size: 70% 70%;
+    background-repeat: no-repeat;
+}
+.badgeAltasEnProceso{
+    background-image: url('../img/AltasEnProceso.png');
+    background-origin: content-box;
+    background-position: center;
+    background-size: 70% 70%;
+    background-repeat: no-repeat;
+}
+.badgeBajasPendientes{
+    background-image: url('../img/BajasPendientes.png');
+    background-origin: content-box;
+    background-position: center;
+    background-size: 70% 70%;
+    background-repeat: no-repeat;
+}
+.badgeBajasPorFinalizar{
+    background-image: url('../img/BajasPorFinalizar.png');
+    background-origin: content-box;
+    background-position: center;
+    background-size: 70% 70%;
+    background-repeat: no-repeat;
+}
+.badgeSolicitudesDeRenovacion{
+    background-image: url('../img/SolicitudesDeRenovacion.png');
+    background-origin: content-box;
+    background-position: center;
+    background-size: 70% 70%;
+    background-repeat: no-repeat;
+}
+.badgeExpedientesSinContrato{
+    background-image: url('../img/ExpedientesSinContrato.png');
+    background-origin: content-box;
+    background-position: center;
+    background-size: 70% 70%;
+    background-repeat: no-repeat;
+}
+/* ======================================================= Fin ====================================================== */
+/* ======================================================== De ====================================================== */
+/* ===================================================== Dashboard ================================================== */
+#tblLtsPrcs > *{
+    font-size: 12px;
+}
+#tblLtsPrcs_wrapper{
+    font-size: 13px;
+}
+#tblLtsPrcs_filter,#tblLtsPrcs_paginate{
+    position: relative;
+    float: right;
+}
+#tblLtsPrcs_paginate{
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+}
+.pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    z-index: 3;
+    color: whitesmoke;
+    cursor: default;
+    background-color: rgba(67,64,65,255);
+    border-color: rgba(184,184,189,255);
+    font-stretch: condensed;
+}
+/*  ======================================= Nuevo Colaborador  ========================================= */
+#addColaboradorNew{
+    padding: 1%;
+    margin-bottom: 2%;
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+    color: white;
+    cursor: default;
+    background-color:  rgba(210,3,44,0.8);
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+}
+.nav-tabs>li>a{
+    color: #555;
+}
+.input-group{
+    margin: 2px 0px;
+}
+.btn{
+    color: whitesmoke;
+        background-color: rgba(210,3,44,0.8);
+    border: 1px solid rgba(210,3,44,0.8);
+}
+.btn-default.active, .btn-default:active, .open>.dropdown-toggle.btn-default {
+    color: whitesmoke;
+    background-color: #555;
+    border-color: #555;
+}
+.btn-success{
+    color: whitesmoke;
+    background-color: RGB(46, 139, 87);
+    border-color: RGB(46, 139, 87);
+}
+.btn-success:hover {
+    color: #555;
+    background-color: RGB(46, 139, 87);
+    border-color: RGB(46, 139, 87);
+    box-shadow: 0px 0px 8px #fff;
+}
+.btn-helper{
+    padding-top: 5px;
+    max-width: 85%;
+    position: relative;
+    float: right;
+    margin: 8px;
+}
+.btn-success.active.focus, .btn-success.active:focus, .btn-success.active:hover, .btn-success:active.focus, .btn-success:active:focus, .btn-success:active:hover, .open>.dropdown-toggle.btn-success.focus, .open>.dropdown-toggle.btn-success:focus, .open>.dropdown-toggle.btn-success:hover {
+    color: #fff;
+    background-color: RGB(46, 139, 87);
+    border-color: RGB(46, 139, 87);
+}
+.btn-info:hover {
+    color: whitesmoke;
+    background-color: indianred;
+    border-color: indianred;
+    box-shadow: 0px 0px 8px #555;
+}
+.btn-info.active.focus, .btn-info.active:focus, .btn-info.active:hover, .btn-info:active.focus, .btn-info:active:focus, .btn-info:active:hover, .open>.dropdown-toggle.btn-info.focus, .open>.dropdown-toggle.btn-info:focus, .open>.dropdown-toggle.btn-info:hover {
+    color: #555;
+    background-color: indianred;
+    border-color: indianred;
+}
+.btn-primary {
+    color: whitesmoke;
+        background-color: #555;
+    border: 1px solid #555;
+}
+.btn-primary:hover {
+    color: whitesmoke;
+        background-color: #555;
+    border: 1px solid #555;
+}
+.btn.focus, .btn:focus, .btn:hover {
+    color: whitesmoke;
+    text-decoration: none;
+}
+.btn-default:hover {
+    color: whitesmoke;
+    background-color: #555;
+    border-color: #555;
+}
+#formDatosDomicilio,#formDatosLaborales,#divFormDatosBeneficiario,#formDatosBancarios,#divFormDatosExpediente{
+    display: none;
+}
+.lnbrk{
+    line-height: 2em;
+    height: 27px;
+}
+/* ============================================ Crear contratos ============================================*/
+#cntrlsCrrNvCntrt_Format{
+    position: fixed;
+    z-index: 1000;
+    top: 278px;
+}
+ /* ======================================== Cargar archivo de nómina ======================================= */
+#nmbrDlClnt,#rfcDlClnt{
+    font-weight: bolder;
+}
+/* ======================================== Bajas Pendientes =================================== */
+#viewFormEliminarSolicitud{
+    border: 1px solid rgba(168,166,168,0.9);
+    padding: 1%;
+    margin: 8px 0%;
+    -webkit-box-shadow: inset 0px 0px 27px 8px rgba(168,166,168,0.9);
+    -moz-box-shadow: inset 0px 0px 27px 8px rgba(168,166,168,0.9);
+    box-shadow: inset 0px 0px 27px 8px rgba(168,166,168,0.9);
+    border-radius: 9px;
+    display: none;
+}
+/* ======================================== Bajar por finalizar =============================== */
+#divFormDocumentosBajaFinalizar{
+    border: 1px solid rgba(168,166,168,0.9);
+    padding: 1%;
+    margin: 8px 0%;
+    -webkit-box-shadow: inset 0px 0px 27px 8px rgba(168,166,168,0.9);
+    -moz-box-shadow: inset 0px 0px 27px 8px rgba(168,166,168,0.9);
+    box-shadow: inset 0px 0px 27px 8px rgba(168,166,168,0.9);
+    border-radius: 9px;
+    display: none;
+}
+/* ======================================== Colaboradores sin contrato =============================== */
+#divFormSubirContrato{
+    border: 1px solid rgba(168,166,168,0.9);
+    padding: 1%;
+    margin: 8px 0%;
+    -webkit-box-shadow: inset 0px 0px 27px 8px rgba(168,166,168,0.9);
+    -moz-box-shadow: inset 0px 0px 27px 8px rgba(168,166,168,0.9);
+    box-shadow: inset 0px 0px 27px 8px rgba(168,166,168,0.9);
+    border-radius: 9px;
+    display: none;
+}
+/* ======================================== Menu Sistema ============================== */
+.sideMenuSis{
+    z-index: 1000; /*2700;*/
+    text-align: center;
+    width: 100%;
+    height: 30px;
+}
+.sideNavSis{
+    min-height: 30px;
+    color: whitesmoke;
+    text-align: center;    
+    width: 90%;
+    margin: 0 auto;
+}
+.sideNavSis>aside{
+    height: 30px;
+    width: auto;
+    position: relative;
+    float: left;
+    overflow-y: hidden;
+    margin: 0;
+    border-bottom: 1px solid whitesmoke;
+    background-color: rgba(67,64,65,1); 
+    -webkit-transition: all 280ms linear;
+    -moz-transition: all 280ms linear;
+    -ms-transition: all 280ms linear;
+    -o-transition: all 280ms linear;
+    transition: all 280ms linear; 
+}
+.containerSideNavSis{
+    display: none;
+    margin: 0px;
+}
+.sideNavSis>aside>h3{
+    font-size: 18px;
+    line-height: 1.2em;
+    cursor: pointer;
+    margin: 5px 5px;
+}
+.sideNavSis>aside>ul{
+    list-style: none;
+    padding: 0px;
+    margin: 5px;
+    text-align: center;
+}
+.sideNavSis>aside>ul>li{
+    text-decoration: none;
+    list-style: none;
+    font-size: 13px;
+}
+.sideNavSis>aside:hover{
+    height: 100%;
+    background-color: rgba(67,64,65,0.8);
+}
+.sideNavSis>aside:hover>h3{
+    font-weight: 600;
+}
+.sideNavSis>aside>ul>li>a:hover,.sideNavSis>aside>ul>li>a:focus{
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 900;
+}
+@media (min-width: 768px) {     
+    .sideMenuSis{
+        z-index: 1000; /*2700*/
+        text-align: center;
+        width: 100%;
+        height: 27px;
+    }
+        .sideNavSis{
+        min-height: 27px;
+        color: whitesmoke;
+        text-align: center;    
+        width: 100%;
+        margin: 0 auto;
+    }
+    .sideNavSis>aside{
+        height: 27px;
+        width: auto;
+        position: relative;
+        float: left;
+        overflow-y: hidden;
+        margin: 0;
+        border-bottom: 1px solid whitesmoke;
+        background-color: rgba(67,64,65,1); 
+        -webkit-transition: all 280ms linear;
+        -moz-transition: all 280ms linear;
+        -ms-transition: all 280ms linear;
+        -o-transition: all 280ms linear;
+        transition: all 280ms linear; 
+    }
+    .sideNavSis>aside>h3{
+        font-size: 14px;
+        line-height: 1.3em;
+        cursor: pointer;
+        margin: 5px 1px;
+    }
+    .sideNavSis>aside>ul{
+        list-style: none;
+        padding: 0px;
+        margin: 5px;
+        text-align: center;
+    }
+}
+@media (min-width: 1023px) {
+    .sideMenuSis{
+        z-index: 1000; /*2700*/
+        width: 100%;
+        height: 30px;
+    }
+    .sideNavSis{
+        min-height: 30px;
+        color: whitesmoke;   
+        width: 90%;
+        margin: 0 auto;
+        position: relative;
+        float: right;
+    }
+    .sideNavSis>aside>h3{
+        font-size: 18px;
+        line-height: 1.2em;
+        cursor: pointer;
+        margin: 5px 5px;
+    }    
+    .sideNavSis>aside{
+        height: 30px;
+        width: auto;
+        overflow-y: hidden;
+        margin: 0;
+        border-bottom: 1px solid whitesmoke;
+        background-color: rgba(67,64,65,1); 
+        -webkit-transition: all 280ms linear;
+        -moz-transition: all 280ms linear;
+        -ms-transition: all 280ms linear;
+        -o-transition: all 280ms linear;
+        transition: all 280ms linear; 
+    }    
+    .sideNavSis>aside>ul{
+        list-style: none;
+        padding: 0px;
+        margin: 5px;
+        text-align: center;
+    }
+}
+/* ================================================ Nuevo Rol ====================================== */
+.titulo-h4{
+    text-align: center;
+}
+.containerListPermisos{
+    border: 1px solid rgba(67,64,65,1);
+    margin: 2%;
+    height: 270px;
+}
+.containerListPermisos>select{
+    width: 100%;
+    height: 100%;
+    font-family: 'Exo', sans-serif;
+    padding: 1%;
+    background-color: transparent;
+    cursor: pointer;
+}
+.containerListPermisos>select:focus{
+    font-weight: 900;
+}
+.centerMiddle{
+    text-align: center;
+    margin-top: 8%;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-transition: all 100ms linear;
+    -moz-transition: all 100ms linear;
+    -ms-transition: all 100ms linear;
+    -o-transition: all 100ms linear;
+    transition: all 100ms linear;
+}
+.centerMiddle:hover{
+    text-shadow: 0px 2px 8px rgba(150, 150, 150, 1);
+}
+.centerMiddleService{ 
+    text-align: center;
+    margin-top: 8%;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-transition: all 100ms linear;
+    -moz-transition: all 100ms linear;
+    -ms-transition: all 100ms linear;
+    -o-transition: all 100ms linear;
+    transition: all 100ms linear;
+}
+.centerMiddleService:hover{
+    text-shadow: 0px 2px 8px rgba(150, 150, 150, 1);
+}
+.centerMiddleEsquemas{
+    text-align: center;
+    margin-top: 8%;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-transition: all 100ms linear;
+    -moz-transition: all 100ms linear;
+    -ms-transition: all 100ms linear;
+    -o-transition: all 100ms linear;
+    transition: all 100ms linear;
+}
+.centerMiddleEsquemas:hover{
+    text-shadow: 0px 2px 8px rgba(150, 150, 150, 1);
+}
+.centerMiddleContratos{ 
+    text-align: center;
+    margin-top: 8%;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-transition: all 100ms linear;
+    -moz-transition: all 100ms linear;
+    -ms-transition: all 100ms linear;
+    -o-transition: all 100ms linear;
+    transition: all 100ms linear;
+}
+.centerMiddleContratos:hover{
+    text-shadow: 0px 2px 8px rgba(150, 150, 150, 1);
+}
+/* ================================================= Detalle de nómina ====================================================== */
+.descriptorDNominas{
+    margin-bottom: 8px;
+    margin-left: 27px;
+}
+.titleDNominas{
+    font-weight: 800;
+    margin-right: 27px;
+    font-size: 21px;
+}
+.contentDNominas{
+    font-size: 18px;
+    font-family: 'Exo', sans-serif;
+}
+/* ================================================= Registro de un contratista ==================================================== */
+#divFormInstrumentoNotarialRgstrCntrtst,#divFormDomicilioFiscalRgstrCntrtst,#divFormDomicilioNotificacionRgstrCntrtst{
+    display: none;
+}
+/* ================================================= Lista de incidencias ========================================================== */
+#divTblLstNcdnc{
+    display: none;
+}
+#divFormEditarIncidencia{
+    border: 1px solid rgba(168,166,168,0.9);
+    padding: 1%;
+    margin: 8px 0%;
+    -webkit-box-shadow: inset 0px 0px 27px 8px rgba(168,166,168,0.9);
+    -moz-box-shadow: inset 0px 0px 27px 8px rgba(168,166,168,0.9);
+    box-shadow: inset 0px 0px 27px 8px rgba(168,166,168,0.9);
+    border-radius: 9px;
+    display: none;
+}
+#divVerIncidencia{
+    border: 1px solid rgba(168,166,168,0.9);
+    padding: 1%;
+    margin: 8px 0%;
+    -webkit-box-shadow: inset 0px 0px 27px 8px rgba(168,166,168,0.9);
+    -moz-box-shadow: inset 0px 0px 27px 8px rgba(168,166,168,0.9);
+    box-shadow: inset 0px 0px 27px 8px rgba(168,166,168,0.9);
+    border-radius: 9px;
+    display: none;
+}
+.descriptor-db{
+    line-height: 1.8em;
+    padding-left: 8px;
+}
+.title-db{
+    font-weight: 900;
+    color: rgba(210,3,44,0.9);
+}
+.content-db{
+    margin-left: 5px;
+    text-decoration: underline;
+    font-weight: 600;
+    color: rgba(67,64,65,0.95);
+}
+/* ==================================================== Generar un nuevo contrato =================================================== */
+textarea.form-control {
+    height: auto;
+    font-size: 15px;
+    font-family: sans-serif;
+    font-weight: 500;
+    line-height: 1.5em;
+    width: 100%;
+    text-align: initial;
+    z-index: 1500;
+}
+.panel-group .panel{
+    border-radius: 8px;
+}
+.panel-default{
+    border-radius: 8px;
+    border-color: 1px solid rgba(67,64,65,1);
+}
+.panel-heading a{
+    color: rgba(67,64,65,1);
+    font-weight: 900;
+}
+.panel-heading a:hover,.panel-heading a:focus{
+    color: rgba(67,64,65,1);
+    font-weight: 900;
+    text-decoration: none;    
+}
+.panel-body{
+    padding: 5px;
+    border: none;
+    overflow-x: hidden;
+}
+.panel-collapse{
+    background-color: whitesmoke;
+    box-shadow: inset -1px 0px 8px rgba(67,64,65,1);
+}
+.panel-default>.panel-heading-colaborator{
+    color: rgba(67,64,65,1);
+    background-color: RGB(143, 188, 139);
+    border: 2px solid RGB(143, 188, 139);    
+}
+.panel-title-colaborator{
+    color: rgba(67,64,65,1);
+    background-color: RGB(143, 188, 139);
+    border: 2px solid RGB(143, 188, 139);     
+}
+.btn-component-colaborator{
+    position: relative;
+    float: left;
+    font-weight: 500;
+    color: rgba(67,64,65,1);
+    background-color: RGB(143, 188, 139);
+    border: 2px solid RGB(143, 188, 139);
+    margin: 3px;
+    border-radius: 8px;
+    -webkit-transition: all 200ms linear;
+    -moz-transition: all 200ms linear;
+    -ms-transition: all 200ms linear;
+    -o-transition: all 200ms linear;
+    transition: all 200ms linear;
+    padding: 3px 2px;
+    margin: 1px;
+}
+.panel-default>.panel-heading-client{
+    color: rgba(67,64,65,1);
+    background-color: RGB(238, 232, 170);
+    border: 2px solid RGB(238, 232, 170);
+}
+.panel-title-client{
+    color: rgba(67,64,65,1);
+    background-color: RGB(238, 232, 170);
+    border: 2px solid RGB(238, 232, 170);
+}
+.btn-component-client{
+    position: relative;
+    float: left;
+    font-weight: 500;
+    color: rgba(67,64,65,1);
+    background-color: RGB(238, 232, 170);
+    border: 2px solid RGB(238, 232, 170);
+    margin: 3px;
+    border-radius: 8px;
+    -webkit-transition: all 200ms linear;
+    -moz-transition: all 200ms linear;
+    -ms-transition: all 200ms linear;
+    -o-transition: all 200ms linear;
+    transition: all 200ms linear;
+    padding: 3px 2px;
+    margin: 1px;
+}
+.panel-default>.panel-heading-contractor{
+    color: rgba(67,64,65,1);
+    background-color: RGB(183,117,210);
+    border: 2px solid RGB(183,117,210);
+}
+.panel-title-contractor{
+    color: rgba(67,64,65,1);
+    background-color: RGB(183,117,210);
+    border: 2px solid RGB(183,117,210);
+}
+.btn-component-contractor{
+    position: relative;
+    float: left;
+    font-weight: 500;
+    color: rgba(67,64,65,1);
+    background-color: RGB(183,117,210);
+    border: 2px solid RGB(183,117,210);
+    margin: 3px;
+    border-radius: 8px;
+    -webkit-transition: all 200ms linear;
+    -moz-transition: all 200ms linear;
+    -ms-transition: all 200ms linear;
+    -o-transition: all 200ms linear;
+    transition: all 200ms linear;
+    padding: 3px 2px;
+    margin: 1px;
+}
+.panel-default>.panel-heading-agreement{
+    color: rgba(67,64,65,1);
+    background-color: RGB(250, 128, 114);
+    border: 2px solid RGB(250, 128, 114);
+}
+.panel-title-agreement{
+    color: rgba(67,64,65,1);
+    background-color: RGB(250, 128, 114);
+    border: 2px solid RGB(250, 128, 114);
+}
+.btn-component-agreement{
+    position: relative;
+    float: left;
+    font-weight: 500;
+    color: rgba(67,64,65,1);
+    background-color: RGB(250, 128, 114);
+    border: 2px solid RGB(250, 128, 114);
+    margin: 3px;
+    border-radius: 8px;
+    -webkit-transition: all 200ms linear;
+    -moz-transition: all 200ms linear;
+    -ms-transition: all 200ms linear;
+    -o-transition: all 200ms linear;
+    transition: all 200ms linear;
+    padding: 3px 2px;
+    margin: 1px;    
+}
+.panel-default>.panel-heading-special{
+    color: rgba(67,64,65,1);
+    background-color: RGB(32, 178, 170);
+    border: 2px solid RGB(32, 178, 170);
+}
+.panel-title-special{
+    color: rgba(67,64,65,1);
+    background-color: RGB(32, 178, 170);
+    border: 2px solid RGB(32, 178, 170);
+}
+.btn-component-special-component{
+    line-height: 1.5em;    
+    font-size: 14px;
+    position: relative;
+    float: left;
+    font-weight: 500;
+    color: rgba(67,64,65,1);
+    background-color: RGB(32, 178, 170);
+    border: 1px solid RGB(32, 178, 170);
+    margin: 5px;
+    border-radius: 8px;
+    -webkit-transition: all 200ms linear;
+    -moz-transition: all 200ms linear;
+    -ms-transition: all 200ms linear;
+    -o-transition: all 200ms linear;
+    transition: all 200ms linear;
+}
+.btn-component-colaborator:hover,.btn-component-client:hover,.btn-component-agreement:hover,.btn-component-special-component:hover{
+    font-weight: 900;
+    color: rgba(67,64,65,1);
+    -webkit-box-shadow:  0px 0px 7px rgba(52,46,45,1);
+    -moz-box-shadow:  0px 0px 7px rgba(52,46,45,1);
+    box-shadow:  0px 0px 7px rgba(52,46,45,1);
+}
+#aggremntArea {
+  height: 200px;
+}
+#viewDocument{
+    min-height: 800px;
+    max-height: 1200px;
+    overflow-y: auto;
+    background-color: white;
+    border: 3px solid black;
+    padding: 5px;
+    font-size: 20px;
+    font-family: 'Exo', sans-serif;
+    font-weight: 500;
+    line-height: 1.5em;
+}
+.specialComponentPlain{
+    color: black;
+    font-style: normal;
+    padding: 2px 8px;
+    margin: 0px 8px;
+    position: relative;
+    float: left;
+    width: 45%;
+    text-align: center;
+}
+.specialComponent{
+    text-decoration: overline;
+    color: black;
+    font-style: normal;
+    padding: 2px 8px;
+    margin: 0px 8px;
+    position: relative;
+    float: left;
+    width: 45%;
+    text-align: center;
+}
+.inline{
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    float: left;
+}
+.nav-sistema{
+    min-height: 50px;
+    background-color: whitesmoke;
+}
+.nav-sistema>div>ul{
+    padding: 0px;
+}
+.nav-sistema>div>ul>li>.dropdown-toggle{
+    font-size: 1.1em;
+    color: rgb(210,3,44);
+    font-stretch: ultra-condensed;
+    border-bottom: 1px solid rgb(210,3,44);
+    border-top: 1px solid rgb(210,3,44);
+}
+.nav .open>a, .nav .open>a:focus, .nav .open>a:hover{
+    border-color: rgb(210,3,44);
+    background-color: rgb(210,3,44);
+    color: whitesmoke;
+}
+.lblInputText{
+    margin-left: 8px;
+    text-decoration: underline;
+    font-weight: 900;
+    line-height: 2px;
+    font-size: 18px;
+}
+.panel-default>.myUser{
+        color: #ddd;
+        background-color: rgb(67,64,65);
+        border-color: rgba(67,64,65,1);
+}
+.myUser a{
+    color: #ddd;
+    font-weight: 900;
+}
+.myUser a:hover, .myUser a:focus {
+    color: #ddd;
+    font-weight: 900;
+    text-decoration: none;
+}
+#navbar-sistema{
+    margin-left: 8%;
+}
+.btn-descartar{
+    background-color: GOLDENROD;
+    border: 1.5px solid DARKGOLDENROD;
+}
+.btn-revisar-incidencia{
+    background-color: GOLDENROD;
+    border: 1.5px solid DARKGOLDENROD;
+}
+.templateAvalible,.templateAvalible:hover,.templateAvalible:active,.templateAvalible:visited{
+    color: #333;
+    font-weight:bolder;
+    text-decoration: none;
+}
+.loader {
+    -webkit-animation: spin 5s linear infinite;
+    animation: spin 5s linear infinite;
+    margin: 0pX;
+}
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.itemReport{
+    background-color: rgba(255,255,255,0.1);
+    padding: 8px;
+    margin-top: 1px
+}
+.itemReport:first-of-type{
+    border-radius: 5px 5px 0px 0px;
+}
+.itemReport:last-of-type{
+    border-radius: 0px 0px 5px 5px;
+}
+.itemReportH{
+    padding: 5px;
+    margin: 0px;
+    font-weight: bolder;
+    color: rgb(210,3,44);
+}
+.itemReportB{
+    max-width: 90%;
+    float: left;
+    position: relative;
+}
+.itemReportLink{
+    max-width: 10%;
+    float: left;
+    position: relative;
+    color: rgba(67,64,65,0.8);
+    padding: 25px;
+    font-size: 27px;
+}
+.itemReportLink:hover{
+    color: rgb(210,3,44);
+    font-size: 27px;
+}
+/* ==============================================================
+   =================== Created by: PabloSagoz =================== 
+   ===================== Date: November 2016 ====================
+   ============================================================== */

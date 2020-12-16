@@ -1,0 +1,600 @@
+/* ==============================================================
+   =================== Created by: PabloSagoz =================== 
+   ===================== Date: November 2016 ====================
+   ============================================================== */
+@import 'https://fonts.googleapis.com/css?family=Exo|Roboto';
+body{
+  font-family: 'Roboto', sans-serif;
+  color: #555;
+    background-color: whitesmoke;
+}
+h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6{
+  font-family: 'Exo', sans-serif;
+  font-weight: normal;
+  color: #333;
+}
+a:focus, a:hover {
+    color: rgba(67,64,65,1);
+    text-decoration: none;
+}
+/* ====================================  Override Bootstrap's default container ================================ */
+@media (min-width: 1200px) {
+  .container {
+    width: 1024px;
+  }
+}
+/* ================================================ Masthead for nav =========================================== */
+.blog-masthead {
+  background-color: rgba(67,64,65,1);
+  -webkit-box-shadow: inset 0 -5px 5px rgba(0,0,0,.5);
+          box-shadow: inset 0 -5px 5px rgba(0,0,0,.5);
+    position: fixed;
+    width: 100%;
+    margin-top: -90px;
+    z-index: 1000;
+}
+/* ===================================================== Nav links ============================================= */
+.blog-nav-item {
+  position: relative;
+  display: inline-block;
+  padding: 10px;
+  font-weight: 500;
+  color: rgba(149,147,152,1);
+    margin-left: 2%;
+
+}
+.blog-nav-item:hover,
+.blog-nav-item:focus {
+  color: #fff;
+  text-decoration: none;
+}
+/* ======================================= Active state gets a caret at the bottom ============================= */
+.blog-nav .active {
+  color: #fff;
+}
+.blog-nav .active:after {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 0;
+  margin-left: -5px;
+  vertical-align: middle;
+  content: " ";
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid;
+  border-left: 5px solid transparent;
+}
+/* ======================================================= Body (bodie) ======================================== */
+.bodie{
+    margin-top: 90px;
+    margin-bottom: 90px;
+}
+#logoPradetti{
+    width: 100%;
+}
+.headland{
+    margin: 0;
+    margin-left: 27px;
+    margin-top: 3%;
+}
+.headland-two{
+    margin: 0;
+    margin-left: 8px;
+    margin-top: 8px;
+    font-weight: 900;
+    color: indianred;
+}
+section:last-of-type{
+    margin-bottom: 90px;
+}
+.section{
+    width: 100%;
+    margin: 8px 0px;
+}
+.sec-header>.btn-group{
+    position: relative;
+    float: right;
+}
+.sec-header>.btn-group>.btn{
+    background-color: transparent;
+    color: whitesmoke;
+    border: 0px solid transparent;
+    -webkit-transition: all 500ms ease-in-out;
+    -moz-transition: all 500ms ease-in-out;
+    -ms-transition: all 500ms ease-in-out;
+    -o-transition: all 500ms ease-in-out;
+    transition: all 500ms ease-in-out;
+}
+.sec-header>.btn-group>.btn:hover{
+    background-color: transparent;
+    color: rgba(149,147,152,1);
+    border: 0px solid transparent;
+}
+.sec-body>.row:nth-child(2n+1){
+    margin-left: 0px;
+}
+.sec-body>.row:nth-child(2n+2){
+    margin-left: 27px;
+}
+#clnt{
+    font-size: 20px;
+}
+.lnbrk{
+    line-height: 2em;
+    height: 27px;
+}
+/* ======================================== Xtrasmall devices (smarthpones, 767px) ============================= */
+@media (max-width: 767px) { 
+    /* ================================================= Nav links ============================================= */
+    .blog-nav-item {
+      position: relative;
+      display: inline-block;
+      padding: 10px;
+      font-weight: 500;
+      color: rgba(149,147,152,1);
+        margin-left: 20%;
+        font-size: 19px;
+
+    }   
+    #logoPradetti{
+        width: 100%;
+        margin-left: 8px;
+    }
+    .sec-header{
+        line-height: 1.8em;
+        margin-right: 2%;
+        background-color: rgba(67,64,65,1);
+        color: whitesmoke;
+        text-align: left;
+        margin-bottom: 8px;
+        font-weight: 600;
+        padding-left: 4px;
+        font-size: 18px;
+        -webkit-box-shadow: inset 0 -5px 5px rgba(0,0,0,.5);
+        box-shadow: inset 0 -5px 5px rgba(0,0,0,.5);
+    }
+    .headland{
+        margin: 0;
+        margin-left: 8px;
+        margin-top: 1%;
+        font-size: 27px;
+    }
+    .headland-two{
+        margin: 0;
+        margin-left: 1px;
+        margin-top: 8px;
+        font-weight: 900;
+        color: indianred;
+        font-size: 23px;
+    }
+    .descriptor{
+        width: 100%;
+        line-height: 1.5em;
+        margin: 0px 0;
+        padding: 0;
+        padding-left: 8px;
+        font-size: 18px;
+        height: auto;
+    }
+    .title{
+        padding: 0 8px;
+        font-weight: 800;
+        font-family: 'Exo', sans-serif;
+        font-size: 15px;
+    }
+    .content{
+        font-size: 15px;
+        border-bottom: 1px solid rgba(149,147,152,1);
+    }
+    .lengthText{
+        font-size: 0.7em;
+    }
+}
+/* ========================================= Small devices (tablets, 768px and up) ============================= */
+@media (min-width: 768px) {
+    /* ================================================= Nav links ============================================= */
+    .blog-nav-item {
+      position: relative;
+      display: inline-block;
+      padding: 10px;
+      font-weight: 500;
+      color: rgba(149,147,152,1);
+        margin-left: 0%;
+        font-size: 11px;
+        font-weight: 800;
+
+    }
+    #logoPradetti{
+        width: 100%;
+        margin-left: 8px;
+    }
+    .headland{
+        margin: 0;
+        margin-left: 27px;
+        margin-top: 1%;
+        font-size: 27px;
+    }
+    .headland-two{
+        margin: 0;
+        margin-left: 1px;
+        margin-top: 8px;
+        font-weight: 900;
+        color: indianred;
+        font-size: 23px;
+    }
+    .sec-header{
+        line-height: 2em;
+        margin-right: 0%;
+        background-color: rgba(67,64,65,1);
+        color: whitesmoke;
+        text-align: left;
+        margin-bottom: 8px;
+        font-weight: 800;
+        padding-left: 16px;
+        font-size: 20px;
+        -webkit-box-shadow: inset 0 -5px 5px rgba(0,0,0,.5);
+        box-shadow: inset 0 -5px 5px rgba(0,0,0,.5);
+        height: auto;
+    }
+    .btn-group{
+        margin: 5px 0;
+    }
+    .sec-body{
+       padding: 3px;
+       line-height: 1em;
+       border-left: 5px solid indianred;
+    }
+    .descriptor{
+        width: 100%;
+        line-height: 1.1em;
+        margin: 8px 0;
+        padding: 0;
+        padding-left: 8px;
+        font-size: 15px;
+        height: auto;
+    }
+    .title{
+        padding: 0 8px;
+        font-weight: 800;
+        font-family: 'Exo', sans-serif;
+        font-size: 15px;
+    }
+    .content{
+        border-bottom: 1px solid rgba(149,147,152,1);
+        line-height: 1.5em;
+    }
+    .lengthText{
+        font-size: 0.8em;
+    }
+}
+/* =========================================== Devices between 768px and 991px ================================= */
+@media (min-width: 768px)  and (max-width: 991px)  {   
+    #logoPradetti{
+        width: 100%;
+        margin-left: 9px;
+    }
+    .headland{
+        margin: 0;
+        margin-left: 27px;
+        margin-top: 2%;
+        font-size: 27px;
+    }
+    .headland-two{
+        margin: 0;
+        margin-left: 1px;
+        margin-top: 8px;
+        font-weight: 900;
+        color: indianred;
+        font-size: 23px;
+    }
+    .descriptor{
+        width: 100%;
+        line-height: 1em;
+        margin: 2px 0;
+        padding: 0;
+        padding-left: 4px;
+        font-size: 14px;
+    }
+    .lengthText{
+        font-size: 0.9em;
+    }  
+}
+/* ========================================== Devices between 992px and  1199px ================================ */
+@media ( min-width: 992px )and ( max-width: 1199px ) {    
+    #logoPradetti{
+        width: 100%;
+        margin-left: 27px;
+    }
+    .headland{
+        margin: 0;
+        margin-left: 35px;
+        margin-top: 1%;
+        font-size: 35px;
+    }
+    .headland-two{
+        margin: 0;
+        margin-left: 27px;
+        margin-top: 8px;
+        font-weight: 900;
+        color: indianred;
+        font-size: 27px;
+    }
+    .descriptor{
+        width: 100%;
+        line-height: 1.2em;
+        margin: 3px 0;
+        padding: 0;
+        padding-left: 6px;
+        font-size: 16px;
+    }
+    .lengthText{
+        font-size: 1em;
+    }  
+}
+/* large devices (tablets, 768px and up) */
+@media (min-width: 1200px) {
+    /* =================================================== Nav links =========================================== */
+    .blog-nav-item {
+      position: relative;
+      display: inline-block;
+      padding: 10px;
+      font-weight: 500;
+      color: rgba(149,147,152,1);
+        margin-left: 0%;
+        font-size: 15px;
+        font-weight: 900;
+
+    }
+    #logoPradetti{
+        width: 100%;
+        margin-left: 27px;
+    }
+    .headland{
+        margin: 0;
+        margin-left: 35px;
+        margin-top: 3%;
+        font-size: 40px;
+    }
+    .headland-two{
+        margin: 0;
+        margin-left: 27px;
+        margin-top: 8px;
+        font-weight: 900;
+        color: indianred;
+        font-size: 27px;
+    }
+    .sec-header{
+        line-height: 2em;
+        margin-right: 0%;
+        background-color: rgba(67,64,65,1);
+        color: whitesmoke;
+        text-align: left;
+        margin-bottom: 8px;
+        font-weight: 800;
+        padding-left: 16px;
+        font-size: 23px;
+        -webkit-box-shadow: inset 0 -5px 5px rgba(0,0,0,.5);
+        box-shadow: inset 0 -5px 5px rgba(0,0,0,.5);
+        height: auto;
+    }
+    .btn-group{
+        margin: 6px 0;
+    }
+    .sec-body{
+       padding: 5px;
+       line-height: 1em;
+       border-left: 5px solid indianred;
+    }
+    .descriptor{
+        width: 100%;
+        line-height: 1.1em;
+        margin: 2px 0;
+        padding: 0;
+        padding-left: 8px;
+        font-size: 15px;
+        height: auto;
+    }
+    .title{
+        padding: 0 8px;
+        font-weight: 900;
+        font-family: 'Exo', sans-serif;
+        font-size: 18px;
+        color: indianred;
+    }
+    .content{
+        border-bottom: 1px solid rgba(149,147,152,1);
+        font-size: 19px;
+    }
+    .lengthText{
+        font-size: 1.1em;
+    }
+}
+.downloader{
+    color: indianred;
+    font-size: 21px;
+    cursor: pointer;
+    -webkit-transition: all 500ms ease-in-out;
+    -moz-transition: all 500ms ease-in-out;
+    -ms-transition: all 500ms ease-in-out;
+    -o-transition: all 500ms ease-in-out;
+    transition: all 500ms ease-in-out;
+}
+.isOk{
+    color: darkseagreen;
+    font-size: 8px;
+    cursor: pointer;
+    -webkit-transition: all 500ms ease-in-out;
+    -moz-transition: all 500ms ease-in-out;
+    -ms-transition: all 500ms ease-in-out;
+    -o-transition: all 500ms ease-in-out;
+    transition: all 500ms ease-in-out;
+}
+.isOk,.isOk:hover{
+    color: darkseagreen;
+    font-size: 8px;
+    cursor: pointer;
+    -webkit-transition: all 500ms ease-in-out;
+    -moz-transition: all 500ms ease-in-out;
+    -ms-transition: all 500ms ease-in-out;
+    -o-transition: all 500ms ease-in-out;
+    transition: all 500ms ease-in-out;
+}
+.isNull,.isNull:hover{
+    color: sandybrown;
+    font-size: 8px;
+    cursor: pointer;
+    -webkit-transition: all 500ms ease-in-out;
+    -moz-transition: all 500ms ease-in-out;
+    -ms-transition: all 500ms ease-in-out;
+    -o-transition: all 500ms ease-in-out;
+    transition: all 500ms ease-in-out;
+}
+#addUser{
+    line-height: 2em;
+    height: auto;
+    border: 5px solid rgba(67,64,65,1);
+    margin: 8px;
+    -webkit-box-shadow: inset 8px 0px 5px 8px rgba(0,0,0,0.27);
+    -moz-box-shadow: inset 8px 0px 5px 8px rgba(0,0,0,0.27);
+    box-shadow: inset 8px 0px 5px 8px rgba(0,0,0,0.27);
+    display: none;
+    padding-bottom: 3px;
+}
+#addUser>*{
+    margin-top: 8px;
+}
+h3{
+    margin-top: 0px;
+}
+.usersRow:nth-child(2n+1){
+    margin-left: 0px;
+    border-top: 1px dotted black;
+    border-bottom: 1px dotted black;
+}
+.usersRow:nth-child(2n)>*{
+    padding-left: 0px;
+}
+.btnGrpUser>*{
+    position: relative;
+    float: right;
+    margin: opx;
+    padding: opx;
+}
+.btnUser{
+    background-color: rgba(67,64,65,1);
+    color: whitesmoke;
+}
+.btnUser:hover{
+    background-color: whitesmoke;
+    color: rgba(67,64,65,1);
+}
+.input-group-addon {
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 1.5px;
+    color: white;
+    text-align: center;
+    background-color: #555;
+    border: 1px solid #555;
+    border-radius: 4px;
+    font-family: 'Exo', sans-serif;
+    margin-top: 4px;
+}
+.sec-footer{
+    border-bottom: 0px solid rgba(149,147,152,1);
+    clear: both;
+}
+.sec-footer:hover{
+    
+}
+footer{
+    text-align: center;
+    width: 100%;
+    background-color: rgba(67,64,65,1);
+    color: rgba(149,147,152,1);
+    line-height: 2.7em;
+    -webkit-box-shadow: inset 0px 5px 15px 0px rgba(0, 0, 0, .5);
+    box-shadow:         inset 0px 5px 15px 0px rgba(0, 0, 0, .5);
+    position: fixed;
+    bottom: 0;
+}
+footer>a{
+    text-decoration: none;
+    color: rgba(149,147,152,1);
+    position: relative;
+    float: right;
+    margin-right: 27px;
+}
+footer>a:hover{
+    color: whitesmoke;
+    text-decoration: none;
+}
+footer>a:visited{
+    color: rgba(149,147,152,1);
+    text-decoration: none;
+}
+.btn-primary {
+    color: #fff;
+    background-color: rgba(67,64,65,1);
+    border-color: rgba(67,64,65,1);
+}
+.btn-primary:hover{
+    color: #fff;
+    background-color: rgba(67,64,65,0.8);
+    border-color: rgba(67,64,65,0.8);
+}
+.btn-primary:active:focus{
+    color: #fff;
+    background-color: rgba(67,64,65,0.9);
+    border-color: rgba(67,64,65,0.9);
+}
+/* ========================================== Agregar una nueva observación al colaborador ========================== */
+#addObservacionesColaborador{
+    padding: 1%;
+    border-bottom: 3px solid black;
+    display: none;
+}
+/* ========================================= Clientes =============================================== */
+#poderLegal{
+    display: none;
+}
+.detalles-contratos-realizados{
+    display: none;
+    border: 5px solid rgba(149,147,152,1);
+    margin: 8px 0px;
+    padding: 0px;
+}
+.inline{
+    margin: 0px;
+    padding: 0px;
+}
+#viewDocument{
+    min-height: 800px;
+    max-height: 1200px;
+    overflow-y: auto;
+    background-color: white;
+    border: 3px solid black;
+    padding: 5px;
+    font-size: 20px;
+    font-family: 'Exo', sans-serif;
+    font-weight: 500;
+    line-height: 1.5em;
+    background-color: #ffffff;
+}
+.specialComponent{
+    text-decoration: overline;
+    color: black;
+    font-style: normal;
+    padding: 2px 8px;
+    margin: 0px 8px;
+    position: relative;
+    float: left;
+    width: 45%;
+    text-align: center;
+}
+/* ==============================================================
+   =================== Created by: PabloSagoz =================== 
+   ===================== Date: November 2016 ====================
+   ============================================================== */

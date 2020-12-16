@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:sec="http://www.springframework.org/schema/security"
+             xsi:schemaLocation="
+      http://www.springframework.org/schema/security
+      http://www.springframework.org/schema/security/spring-security-3.2.xsd
+      http://www.springframework.org/schema/beans
+      http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+    
+    <http pattern="/*.jar" security="none"/>
+    <http pattern="/frontend/**" security="none"/>
+    <http pattern="/inicioSesion.htm*" security="none"/>
+    <http pattern="/redirect.jsp*" security="none"/>
+    
+    <sec:http auto-config="true" use-expressions="true">
+        <sec:intercept-url pattern="/**" access="isAuthenticated()"/> 
+        <sec:access-denied-handler error-page="/accesoDenegado.htm"/>               
+        <sec:form-login login-page='/inicioSesion.htm'
+                        default-target-url='/index.htm'  
+                        authentication-failure-url="/inicioSesion.htm?login_error=1"
+                        always-use-default-target="true"/>
+        <session-management invalid-session-url="/inicioSesion.htm" session-authentication-error-url="/inicioSesion.htm">
+            <concurrency-control expired-url="/inicioSesion.htm" max-sessions="27"/>                                                                       
+        </session-management>
+    </sec:http>
+    
+    <authentication-manager>
+        <authentication-provider user-service-ref="authenticationService">
+            <password-encoder hash="plaintext " />
+        </authentication-provider>
+    </authentication-manager>
+    
+    
+</beans:beans>
+

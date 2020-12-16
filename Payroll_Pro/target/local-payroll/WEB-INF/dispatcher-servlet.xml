@@ -1,0 +1,270 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:sec="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context-4.0.xsd
+       http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd 
+       http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+       
+    <bean id="webContentInterceptor" class="org.springframework.web.servlet.mvc.WebContentInterceptor">
+        <property name="cacheSeconds" value="0"/>
+        <property name="useExpiresHeader" value="false"/>
+        <property name="useCacheControlHeader" value="true"/>
+        <property name="useCacheControlNoStore" value="true"/>
+    </bean>
+    
+    <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
+    <bean id="keyloggin" class="com.pradettisanti.payroll.controller.SessionController"/> 
+    <bean id="keyClientes" class="com.pradettisanti.payroll.controller.ClienteController" />
+    <bean id="keyContratistas" class="com.pradettisanti.payroll.controller.ContratistaController" />
+    <bean id="keySindicatos" class="com.pradettisanti.payroll.controller.SinidicatoController" />
+    <bean id="keySistema" class="com.pradettisanti.payroll.controller.SistemaController" />
+    <bean id="keyColaborador" class="com.pradettisanti.payroll.controller.ColaboradorController" />
+    <bean id="keyDocAndServ" class="com.pradettisanti.payroll.controller.DocumentalController" />
+    <bean id="keyReportes" class="com.pradettisanti.payroll.controller.ReportesController" />
+        
+    <!--Servicio utilizado para codificar el password-->
+    <bean id="passwordEncoder"
+          class="org.springframework.security.authentication.encoding.ShaPasswordEncoder" >
+        <constructor-arg value="1"/>
+    </bean>
+    
+    <!--FTP Service-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+    
+    <sec:global-method-security pre-post-annotations="enabled" />
+    <context:annotation-config />
+    <context:component-scan base-package="com.pradettisanti.payroll"/>
+    
+    <!-- ADD PERSISTENCE SUPPORT HERE (jpa, hibernate, etc) -->
+    <bean name="authenticationService" class="com.pradettisanti.payroll.service.impl.AuthenticationServiceImpl"/>
+    
+    <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                
+                <prop key="colaboradores/{estatus}.htm">keyColaborador </prop>
+                <prop key="colaboradores/nuevo-colaborador.htm">keyColaborador </prop>
+                <prop key="colaborador/datosPersonales.htm">keyColaborador </prop>
+                <prop key="colaboradores/editar-registro/{idAgremiado}.htm">keyColaborador </prop>
+                <prop key="colaborador/datosDomicilio.htm">keyColaborador </prop>
+                <prop key="colaborador/contratistas-del-cliente/{idCliente}.htm">keyColaborador </prop>
+                <prop key="colaborador/contratistas-del-cliente.htm">keyColaborador </prop>
+                <prop key="colaborador/datosLaborales.htm">keyColaborador </prop>
+                <prop key="colaborador/datosBeneficiario.htm">keyColaborador </prop>
+                <prop key="colaborador/datosBancarios.htm">keyColaborador </prop>
+                <prop key="colaborador/documento.htm">keyColaborador </prop>
+                <prop key="colaborador/documentos-del-colaborador.htm">keyColaborador </prop>
+                <prop key="colaborador/ver-documentos/{tipoDocumento}/{idAgremiado}.htm">keyColaborador </prop>
+                <prop key="colaborador/borrar-documento/{tipoDocumento}/{idAgremiado}.htm">keyColaborador </prop>
+                <prop key="colaborador/verificar-expediente-incompleto.htm">keyColaborador </prop>
+                <prop key="colaborador/kardex/{idAgremiado}.htm">keyColaborador </prop>
+                <prop key="colaborador/vobo-del-colaborador/{idAgremiado}.htm">keyColaborador </prop>
+                <prop key="colaborador/seleccionar-periodo-fa/{idAgremiado}.htm">keyColaborador </prop>
+                <prop key="colaborador/sidicato-del-colaborador.htm">keyColaborador </prop>                
+                <prop key="colaborador/rechazar-alta-solicitada/{idAgremiado}.htm">keyColaborador </prop>
+                <prop key="colaborador/documentos-del-contrato/{IdAgremiado}.htm">keyColaborador </prop>
+                <prop key="colaborador/crear-adhesion/{idAgremiado}.htm">keyColaborador </prop>
+                <prop key="colaborador/datos-del-contrato/{idAgremiado}.htm">keyColaborador </prop>
+                <prop key="colaborador/verificar-expediente-contrato.htm">keyColaborador </prop>
+                <prop key="colaborador/verificar-documentos-fondo-ahorro.htm">keyColaborador </prop>
+                <prop key="colaborador/subir-alta-imss/{IdAgremiado}.htm">keyColaborador </prop>
+                <prop key="colaborador/verificar-expediente-imss.htm">keyColaborador </prop>
+                <prop key="colaborador/rechazar-alta-en-proceso/{idAgremiado}.htm">keyColaborador </prop>
+                <prop key="colaboradores/editar-colaborador/{idAgremiado}.htm">keyColaborador </prop>
+                <prop key="colaborador/registrar-incidencia/{idAgremiado}.htm">keyColaborador </prop>
+                <prop key="colaborador/solicitud-de-baja/{idAgremiado}.htm">keyColaborador </prop>
+                <prop key="colaborador/solicitud-de-baja.htm">keyColaborador </prop>
+                <prop key="colaborador/solicitud-de-baja-detalles/{idAgremiado}.htm">keyColaborador </prop>
+                <prop key="colaborador/baja-sin-firmar/{idAgremiado}.htm">keyColaborador </prop>
+                <prop key="colaborador/reporte-fondo-ahorro/{idAgremiado}.htm">keyColaborador </prop>
+                <prop key="colaborador/continuar-solicitud/{idAgremiado}.htm">keyColaborador </prop>
+                <prop key="colaborador/documento-baja.htm">keyColaborador </prop>
+                <prop key="colaborador/documentos-de-la-solicitud-de-baja.htm">keyColaborador </prop>
+                <prop key="colaborador/ver-documento-de-baja/{posicion}/{idAgremiado}/{idSolicitud}/{tipoDoc}.htm">keyColaborador </prop>
+                <prop key="colaborador/borrar-documento-de-baja/{posicion}/{idAgremiado}/{idSolicitud}/{tipoDoc}.htm">keyColaborador </prop>
+                <prop key="colaborador/continuar-proceso-de-baja.htm">keyColaborador </prop>
+                <prop key="colaborador/rechazar-baja/{idAgremiado}.htm">keyColaborador </prop>
+                <prop key="colaborador/rechazar-baja.htm">keyColaborador </prop>
+                <prop key="colaborador/subir-documentos-baja-firmados/{idAgremiado}.htm">keyColaborador </prop>
+                <prop key="colaborador/subir-documentos-finales/{idAgremiado}.htm">keyColaborador </prop>
+                <prop key="colaborador/documentos-finales.htm">keyColaborador </prop>
+                <prop key="colaborador/rechazar-baja-definitivamente/{idAgremiado}.htm">keyColaborador </prop>
+                <prop key="colaborador/rechazar-baja-definitivamente.htm">keyColaborador </prop>
+                <prop key="colaborador/crear-solicitud-renovacion-contrato/{idAgremiado}.htm">keyColaborador </prop>
+                <prop key="colaborador/recibir-solicitud-renovacion-contrato.htm">keyColaborador </prop>
+                <prop key="colaborador/{tipoDeVista}/solicitud-de-renovacion/{idAgremiado}.htm">keyColaborador </prop>
+                <prop key="colaborador/aprobacion-de-solicitud.htm">keyColaborador </prop>
+                <prop key="colaborador/rechazo-de-solicitud.htm">keyColaborador </prop>
+                <prop key="colaborador/crear-contrato-renovacion/{idAgremiado}.htm">keyColaborador </prop>
+                <prop key="colaborador/ver-contrato-de-renovacion.htm">keyColaborador </prop>
+                <prop key="colaborador/subir-contrato-renovacion/{idAgremiado}.htm">keyColaborador </prop>
+                <prop key="colaborador/contrato-de-renovacion.htm">keyColaborador </prop>
+                <prop key="colaborador/descartar-expediente/{idAgremiado}.htm">keyColaborador </prop>
+                <prop key="colaborador/agregar-observaciones/{idAgremiado}.htm">keyColaborador </prop>
+                <prop key="colaborador/registrar-colaborador.htm">keyColaborador </prop>
+                <prop key="colaborador/contratos-cliente/{cliente}.htm">keyColaborador </prop>
+                <prop key="colaborador/sups-contrato/{contrato}.htm">keyColaborador </prop>
+                <prop key="colaborador/cd-contrato/{contrato}.htm">keyColaborador </prop>
+                <prop key="colaborador/registrar-adecuacion-colaborador.htm">keyColaborador </prop>
+                <prop key="colaborador/documentos-del-fondo-ahorro/{IdAgremiado}.htm">keyColaborador </prop>
+                
+                <!-- Cliente Controller -->
+                <prop key="cliente/clientes.htm">keyClientes</prop>
+                <prop key="cliente/registro-cliente.htm">keyClientes</prop>
+                <prop key="cliente/todos-los-clientes.htm">keyClientes</prop>
+                <prop key="cliente/buscar-por/{param}/dato/{value}.htm">keyClientes</prop>
+                <prop key="cliente/editar-cliente/{idCliente}.htm">keyClientes</prop>
+                <prop key="cliente/{idCliente}/kardex.htm">keyClientes</prop>
+                <prop key="cliente/{idCliente}/kardex/pdf.htm">keyClientes</prop>
+                <prop key="cliente/registrar-usuario.htm">keyClientes</prop>
+                <prop key="cliente/editar-usuario.htm">keyClientes</prop>
+                <prop key="cliente/datos-cliente.htm">keyClientes</prop>
+                <prop key="cliente/instrumento-notarial.htm">keyClientes</prop>
+                <prop key="cliente/domicilio-fiscal.htm">keyClientes</prop>
+                <prop key="cliente/domicilio-de-notificacion.htm">keyClientes</prop>
+                <prop key="cliente/acceso-usuario.htm">keyClientes</prop>
+                <prop key="cliente/activar-usuario.htm">keyClientes</prop>
+                <prop key="cliente/cargar-nomina/{idCliente}.htm">keyClientes</prop>
+                <prop key="cliente/detalles-de-nomina-ingresada.htm">keyClientes</prop>
+                <prop key="cliente/detalle-del-recibo/{idRecibo}.htm">keyClientes</prop>
+                <prop key="cliente/incidencias/{idCliente}.htm">keyClientes</prop>
+                <prop key="cliente/ver-incidencias.htm">keyClientes</prop>
+                <prop key="cliente/editar-incidencia/{idCliente}/{idAgremiado}/{idIncidencia}/{idTipoIncidencia}.htm">keyClientes</prop>
+                <prop key="cliente/ver-incidencia/{idCliente}/{idAgremiado}/{idIncidencia}/{idTipoIncidencia}.htm">keyClientes</prop>
+                <prop key="cliente/actualizar-incidencia.htm">keyClientes</prop>
+                <prop key="cliente/{idCliente}/{documento}.htm">keyClientes</prop>
+                <prop key="cliente/enviar-recibos-email.htm">keyClientes</prop>
+                <prop key="cliente/generar-recibos-pdf-zip.htm">keyClientes</prop>
+                <prop key="cliente/generar-recibos-pdf.htm">keyClientes</prop>
+                
+                <!-- Constratista Controller -->
+                <prop key="contratista/contratistas.htm">keyContratistas</prop>
+                <prop key="contratista/registro-contratista.htm">keyContratistas</prop>
+                <prop key="contratista/todos-los-contratistas.htm">keyContratistas</prop>
+                <prop key="contratista/buscar-por/{param}/dato/{value}.htm">keyContratistas</prop>
+                <prop key="contratista/editar-contratista/{idContratista}.htm">keyContratistas</prop>
+                <prop key="constratista/datos-contratista.htm">keyContratistas</prop>
+                <prop key="contratista/instrumento-notarial.htm">keyContratistas</prop>
+                <prop key="contratista/domicilio-fiscal.htm">keyContratistas</prop>
+                <prop key="contratista/domicilio-de-notificacion.htm">keyContratistas</prop>
+                <prop key="contratista/{idContratista}/kardex.htm">keyContratistas</prop>
+                <prop key="contratista/{idContratista}/kardex/pdf.htm">keyContratistas</prop>
+                <prop key="contratista/generar-nuevo-contrato/{idContratista}.htm">keyContratistas</prop>
+                <prop key="contratista/contrato.htm">keyContratistas</prop>
+                <prop key="contratista/{idContratista}/{documento}.htm">keyContratistas</prop>
+                
+                <!-- Sindicato Controller -->
+                <prop key="sindicato/sindicatos.htm">keySindicatos</prop>
+                <prop key="sindicato/registro-sindicato.htm">keySindicatos</prop>
+                <prop key="sindicato/todos-los-sindicatos.htm">keySindicatos</prop>
+                <prop key="sindicato/buscar-por/{param}/dato/{value}.htm">keySindicatos</prop>
+                <prop key="sindicato/editar-sindicato/{idSindicato}.htm">keySindicatos</prop>
+                <prop key="sindicato/datos-sindicato.htm">keySindicatos</prop>
+                <prop key="sindicato/{sindicato}/logo/{logo}.htm">keySindicatos</prop>
+                <prop key="sindicato/{idSindicato}/kardex.htm">keySindicatos</prop>
+                <prop key="sindicato/{idSindicato}/kardex/pdf.htm">keySindicatos</prop>
+                <prop key="colaboradores/{idColaborador}/kardex/pdf.htm">keySindicatos</prop>
+                         
+                <!-- Sistema Controller -->       
+                <prop key="sistema/opciones-del-sistema.htm">keySistema</prop>
+                <prop key="sistema/ver-bitacora.htm">keySistema</prop>
+                <prop key="sistema/mi-bitacora.htm">keySistema</prop>
+                <prop key="sistema/contratos-generados-contratista-cliente.htm">keySistema</prop>
+                <prop key="sistema/editar-datos-del-contrato-generado.htm">keySistema</prop>
+                <prop key="sistema/contrato.htm">keySistema</prop>
+                <prop key="sistema/contrato-contratista-cliente/{idContrato}/pdf.htm">keySistema</prop>
+                <prop key="sistema/cargar-contrato-entre-empresas/{idContratoEmpresas}/file.htm">keySistema</prop>
+                <prop key="sistema/contrato-entre-empresas-firmado.htm">keySistema</prop>
+                <prop key="sistema/contrato-entre-empresas/{idContratoEmpresas}/pdf.htm">keySistema</prop>
+                <prop key="sistema/nuevo-contrato-colaboradores.htm">keySistema</prop>
+                <prop key="sistema/nuevo-contrato-contratistas.htm">keySistema</prop>
+                <prop key="sistema/contratos-creados.htm">keySistema</prop>
+                <prop key="sistema/editar-contrato.htm">keySistema</prop>
+                <prop key="sistema/datos-contrato-colaboradores.htm">keySistema</prop>
+                <prop key="sistema/datos-contrato-contratista.htm">keySistema</prop>
+                <prop key="sistema/contrato-demo/{idContrato}.htm">keySistema</prop>
+                <prop key="sistema/cambiar-estado-del-contrato.htm">keySistema</prop>
+                <prop key="sistema/relacionar-contrato.htm">keySistema</prop>
+                <prop key="sistema/agregar-contratistas-al-contrato.htm">keySistema</prop>
+                <prop key="sistema/quitar-un-contratista-del-contrato.htm">keySistema</prop>
+                <prop key="sistema/catalogo-documental.htm">keySistema</prop>
+                <prop key="sistema/registro-documental.htm">keySistema</prop>
+                <prop key="sistema/editar-registro-documental.htm">keySistema</prop>
+                <prop key="sistema/guardar-cambios-documental.htm">keySistema</prop>
+                <prop key="sistema/registrar-documento.htm">keySistema</prop>
+                <prop key="sistema/documentos-por-modulo.htm">keySistema</prop>
+                <prop key="sistema/editar-documento.htm">keySistema</prop>
+                <prop key="sistema/datos-del-documento.htm">keySistema</prop>
+                <prop key="sistema/incidencias-revisadas.htm">keySistema</prop>
+                <prop key="sistema/incidencias-revisadas-del-cliente.htm">keySistema</prop>
+                <prop key="sistema/incidencias-sin-revisar.htm">keySistema</prop>
+                <prop key="sistema/incidencias-sin-revisar-del-cliente.htm">keySistema</prop>
+                <prop key="sistema/recoger-incidencia.htm">keySistema</prop>
+                <prop key="sistema/nominas-registradas.htm">keySistema</prop>
+                <prop key="sistema/vista-general-de-nomina.htm">keySistema</prop>
+                <prop key="sistema/enviar-recibos-email.htm">keySistema</prop>
+                <prop key="sistema/generar-recibos-pdf-zip.htm">keySistema</prop>
+                <prop key="sistema/generar-recibos-pdf.htm">keySistema</prop>
+                <prop key="sistema/detalle-del-recibo/{idRecibo}.htm">keySistema</prop>
+                <prop key="sistema/enviar-recibo-por-email.htm">keySistema</prop>
+                <prop key="sistema/ver-recibo-pdf/{idRecibo}.htm">keySistema</prop>
+                <prop key="sistema/nuevo-rol.htm">keySistema</prop>
+                <prop key="sistema/todos-los-roles.htm">keySistema</prop>
+                <prop key="sistema/edicion-de-rol.htm">keySistema</prop>
+                <prop key="sistema/datos-del-rol.htm">keySistema</prop>
+                <prop key="sistema/registro-de-un-usuario.htm">keySistema</prop>
+                <prop key="sistema/todos-los-usuarios.htm">keySistema</prop>
+                <prop key="sistema/editar-usuario.htm">keySistema</prop>
+                <prop key="sistema/datos-de-usuario.htm">keySistema</prop>
+                <prop key="sistema/quitar-un-cliente-al-usuario.htm">keySistema</prop>
+                <prop key="sistema/cambiar-acceso.htm">keySistema</prop>
+                <prop key="sistema/activar-usuario.htm">keySistema</prop>
+                <prop key="sistema/mi-usuario.htm">keySistema</prop>
+                <prop key="sistema/registrar-zona-salarial.htm">keySistema</prop>
+                <prop key="sistema/registrar-periodo-fondo-ahorro.htm">keySistema</prop>
+                <prop key="sistema/zonas-salariales.htm">keySistema</prop>
+                <prop key="sistema/periodos-fondo-ahorro.htm">keySistema</prop>
+                <prop key="sistema/editar-zona-salarial/{idZona}.htm">keySistema</prop>
+                <prop key="sistema/editar-periodo-fa/{idPeriodo}.htm">keySistema</prop>
+                <prop key="sistema/datos-zona-salarial.htm">keySistema</prop>
+                <prop key="sistema/datos-fondo-ahorro.htm">keySistema</prop>
+                <prop key="sistema/contrato-contratista-colaborador.htm">keySistema</prop>
+                <prop key="sistema/mis-notificaciones.htm">keySistema</prop>
+                <prop key="sistema/cambiar-mi-acceso.htm">keySistema</prop>
+                <prop key="sistema/mi--acceso.htm">keySistema</prop>
+                <prop key="sistema/editar-recibos-registrados.htm">keySistema</prop>
+                <prop key="sistema/bitacora-correos.htm">keySistema</prop>
+                <prop key="sistema/vista-general-bitacora-correos.htm">keySistema</prop>
+                <prop key="sistema/editar-recibos-nomina.htm">keySistema</prop>
+                <prop key="sistema/file/editar-recibos-nomina.htm">keySistema</prop>
+                <prop key="sistema/registrar-sup.htm">keySistema</prop>
+                <prop key="sistema/sup-registrados.htm">keySistema</prop>                
+                <prop key="sistema/guardar-sup.htm">keySistema</prop>
+                <prop key="sistema/guardar-tipo-sup.htm">keySistema</prop>             
+                <prop key="sistema/edicion-de-sup.htm">keySistema</prop> 
+                <prop key="sistema/contratos-cliente/{cliente}.htm">keySistema</prop>         
+                             
+                <prop key="documental/{idDoc}/request.htm">keyDocAndServ</prop>     
+                       
+                <prop key="reporte/reportes.htm">keyReportes</prop>  
+                <prop key="reporte/{url}.htm">keyReportes</prop>             
+                                
+                <!--Mapeo para session--> 
+                <prop key="inicioSesion.htm">keyloggin</prop>
+                <prop key="index.htm">keyloggin</prop>
+                <prop key="accesoDenegado.htm">keyloggin</prop>
+            </props>
+            
+        </property>
+    </bean>
+
+    <bean id="viewResolver"
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+          p:prefix="/WEB-INF/jsp/"
+          p:suffix=".jsp" />
+    
+</beans>

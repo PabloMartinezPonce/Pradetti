@@ -1,0 +1,197 @@
+/* ==============================================================
+   =================== Created by: PabloSagoz =================== 
+   ===================== Date: November 2016 ====================
+   ============================================================== */
+@import url('https://fonts.googleapis.com/css?family=Share+Tech+Mono');
+@import url('https://fonts.googleapis.com/css?family=VT323');
+h1,h2,h3,h4,h5,h6,a,footer{
+  font-family: 'Share Tech Mono', monospace;
+    color: rgba(67,64,65,1);
+}
+body{    
+    background-color: whitesmoke
+}
+h2{
+    font-size: 3em;
+    color: rgba(67,64,65,1);
+}
+.text-center{
+    margin: 10% 2%;
+    padding:2%;
+    background-color: whitesmoke;
+    border: none;
+    border-radius: 9px;
+    text-shadow: 0px 0px 1px rgba(0,0,0,1);
+    -webkit-box-shadow: inset 0px 0px 27px 8px rgba(67,64,65,1);
+    -moz-box-shadow: inset 0px 0px 27px 8px rgba(67,64,65,1);
+    box-shadow: inset 0px 0px 27px 8px rgba(67,64,65,1);
+}
+a{
+    color: rgba(67,64,65,1);
+}
+a:hover{
+    color: rgba(67,64,65,1);
+}
+a:visited{
+    color: rgba(67,64,65,1);
+    text-decoration: none;
+}
+footer{
+    position: fixed;
+    bottom: 0px;
+    display: block;
+    width: 100%;
+    text-align: center;
+    height: 50px;
+    z-index: 1500;
+    padding: 1%;
+    font-size:18px;
+    color: rgba(67,64,65,1);
+    background-color: whitesmoke;
+    text-shadow: 0px 0px 1px rgba(0,0,0,1); 
+    -webkit-box-shadow:  0px -8px 6px 0px rgba(67,64,65,1);
+    -moz-box-shadow:  0px -8px 6px 0px rgba(67,64,65,1);
+    box-shadow:  0px -8px 6px 0px rgba(67,64,65,1);
+}
+.mega-number{
+    font-size: 6em;
+    font-weight: 900;
+    color: transparent;    
+    text-shadow:     1px 0 0 rgba(67,64,65,0.9),
+                     2px 0 0 #c9c9c9,
+                     3px 0 0 #bbb, 
+                     4px 0 0 #b9b9b9, 
+                     5px 0 0 #aaa, 
+                     6px 0 0 #bbb;
+    font-family: 'VT323', monospace;
+    -webkit-transition: all 500ms linear;
+    -moz-transition: all 500ms linear;
+    -ms-transition: all 500ms linear;
+    -o-transition: all 500ms linear;
+    transition: all 500ms linear;
+}
+.mega-number:hover{
+     text-shadow:    0 1px 0 rgba(67,64,65,1),
+                    0 2px 0 #c9c9c9,
+                    0 3px 0 #bbb, 
+                    0 4px 0 #b9b9b9, 
+                    0 5px 0 #aaa, 
+                    0 6px 0 #bbb;    
+}
+.heading{
+    line-height: 2em;
+}
+.description{
+    
+}
+.element-animation{
+  animation: animationFrames linear 3s;
+  animation-iteration-count: infinite;
+  transform-origin: 50% 100%;
+  -webkit-animation: animationFrames linear 3s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-transform-origin: 50% 100%;
+  -moz-animation: animationFrames linear 3s;
+  -moz-animation-iteration-count: infinite;
+  -moz-transform-origin: 50% 100%;
+  -o-animation: animationFrames linear 3s;
+  -o-animation-iteration-count: infinite;
+  -o-transform-origin: 50% 100%;
+  -ms-animation: animationFrames linear 3s;
+  -ms-animation-iteration-count: infinite;
+  -ms-transform-origin: 50% 100%;
+}
+
+@keyframes animationFrames{
+  0% {
+    transform: rotate(27deg) ;
+  }
+  25% {
+    transform: rotate(0deg) ;
+  }
+  50% {
+    transform: rotate(-27deg) ;
+  }
+  75% {
+    transform: rotate(0deg) ;
+  }
+  100% {
+    transform: rotate(27deg) ;
+  }
+}
+
+@-moz-keyframes animationFrames{
+  0% {
+    transform: rotate(27deg) ;
+  }
+  25% {
+    transform: rotate(0deg) ;
+  }
+  50% {
+    transform: rotate(-27deg) ;
+  }
+  75% {
+    transform: rotate(0deg) ;
+  }
+  100% {
+    transform: rotate(27deg) ;
+  }
+}
+
+@-webkit-keyframes animationFrames {
+  0% {
+    transform: rotate(27deg) ;
+  }
+  25% {
+    transform: rotate(0deg) ;
+  }
+  50% {
+    transform: rotate(-27deg) ;
+  }
+  75% {
+    transform: rotate(0deg) ;
+  }
+  100% {
+    transform: rotate(27deg) ;
+  }
+}
+
+@-o-keyframes animationFrames {
+  0% {
+    transform: rotate(27deg) ;
+  }
+  25% {
+    transform: rotate(0deg) ;
+  }
+  50% {
+    transform: rotate(-27deg) ;
+  }
+  75% {
+    transform: rotate(0deg) ;
+  }
+  100% {
+    transform: rotate(27deg) ;
+  }
+}
+
+@-ms-keyframes animationFrames {
+  0% {
+    transform: rotate(27deg) ;
+  }
+  25% {
+    transform: rotate(0deg) ;
+  }
+  50% {
+    transform: rotate(-27deg) ;
+  }
+  75% {
+    transform: rotate(0deg) ;
+  }
+  100% {
+    transform: rotate(27deg) ;
+  }
+}
+/* ==============================================================
+   =================== Created by: PabloSagoz =================== 
+   ===================== Date: November 2016 ====================
+   ============================================================== */

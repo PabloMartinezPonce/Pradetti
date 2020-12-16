@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="com.pradettisanti_PSPayRoll_persistence-unit" transaction-type="JTA">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <jta-data-source>java:app/JNDI_TEST</jta-data-source>
+    <class>com.pradettisanti.payroll.pojoh.ActaNotarial</class>
+    <class>com.pradettisanti.payroll.pojoh.Agremiado</class>
+    <class>com.pradettisanti.payroll.pojoh.Bitacora</class>
+    <class>com.pradettisanti.payroll.pojoh.Cliente</class>
+    <class>com.pradettisanti.payroll.pojoh.Contratista</class>
+    <class>com.pradettisanti.payroll.pojoh.Contrato</class>
+    <class>com.pradettisanti.payroll.pojoh.ContratoEmpresas</class>
+    <class>com.pradettisanti.payroll.pojoh.DatosBancarios</class>
+    <class>com.pradettisanti.payroll.pojoh.DatosBeneficiario</class>
+    <class>com.pradettisanti.payroll.pojoh.DatosDomicilio</class>
+    <class>com.pradettisanti.payroll.pojoh.DatosLaborales</class>
+    <class>com.pradettisanti.payroll.pojoh.DatosPersonales</class>
+    <class>com.pradettisanti.payroll.pojoh.Documento</class>
+    <class>com.pradettisanti.payroll.pojoh.DocumentosBaja</class>
+    <class>com.pradettisanti.payroll.pojoh.EmpresasDomicilio</class>
+    <class>com.pradettisanti.payroll.pojoh.Incidencia</class>
+    <class>com.pradettisanti.payroll.pojoh.Modulo</class>
+    <class>com.pradettisanti.payroll.pojoh.MotivoBaja</class>
+    <class>com.pradettisanti.payroll.pojoh.Notificaciones</class>
+    <class>com.pradettisanti.payroll.pojoh.Permiso</class>
+    <class>com.pradettisanti.payroll.pojoh.PoderLegal</class>
+    <class>com.pradettisanti.payroll.pojoh.Recibo</class>
+    <class>com.pradettisanti.payroll.pojoh.RelacionContrato</class>
+    <class>com.pradettisanti.payroll.pojoh.Rol</class>
+    <class>com.pradettisanti.payroll.pojoh.Sindicato</class>
+    <class>com.pradettisanti.payroll.pojoh.SolicitudBaja</class>
+    <class>com.pradettisanti.payroll.pojoh.SolicitudRenovacionContrato</class>
+    <class>com.pradettisanti.payroll.pojoh.StatusAgremiado</class>
+    <class>com.pradettisanti.payroll.pojoh.TipoActa</class>
+    <class>com.pradettisanti.payroll.pojoh.TipoContrato</class>
+    <class>com.pradettisanti.payroll.pojoh.TipoDocumento</class>
+    <class>com.pradettisanti.payroll.pojoh.TipoDomicilio</class>
+    <class>com.pradettisanti.payroll.pojoh.TipoFiniquito</class>
+    <class>com.pradettisanti.payroll.pojoh.TipoIncidencia</class>
+    <class>com.pradettisanti.payroll.pojoh.TipoNomina</class>
+    <class>com.pradettisanti.payroll.pojoh.Usuario</class>
+    <class>com.pradettisanti.payroll.pojoh.ZonaSm</class>
+    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    <properties/>
+  </persistence-unit>
+</persistence>

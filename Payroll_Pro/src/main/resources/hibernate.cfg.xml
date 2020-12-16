@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    
+    <!-- Pro -->
+<!--    <property name="hibernate.connection.url">jdbc:mysql://10.2.0.17:3306/payroll_v2</property>
+    <property name="hibernate.connection.username">PSC_Pro</property>
+    <property name="hibernate.connection.password">fd6E8RBVFvF8czRN</property>-->
+    
+     <!--Localhost--> 
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/payroll_local_db</property> 
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">1234</property>
+    
+     <!-- UAT -->
+<!--    <property name="hibernate.connection.url">jdbc:mysql://10.2.0.18:3306/payroll_uat</property>
+    <property name="hibernate.connection.username">PSC_UAT</property>
+    <property name="hibernate.connection.password">BnI3L5fb7owLIKlJ</property>-->
+    
+     <!--Dev--> 
+<!--    <property name="hibernate.connection.url">jdbc:mysql://10.2.0.18:3306/payroll_desarrollo</property>
+    <property name="hibernate.connection.username">PSC_Dev</property>
+    <property name="hibernate.connection.password">4sxhtFBE4wjuef7Z</property>   -->
+    
+    <property name="hibernate.hbm2ddl.auto">update</property>
+    <property name="hibernate.current_session_context_class">thread</property>
+    <property name="hibernate.show_sql">false</property>
+    <property name="format_sql">false</property>
+    <property name="hibernate.connection.CharSet">utf8</property>
+    <property name="hibernate.connection.characterEncoding">utf8</property>
+    <property name="hibernate.connection.useUnicode">true</property>
+    <property name="hibernate.query.factory_class">org.hibernate.hql.ast.ASTQueryTranslatorFactory</property>
+    <property name="hibernate.query.factory_class">org.hibernate.hql.internal.classic.ClassicQueryTranslatorFactory</property>
+    <property name="hibernate.enable_lazy_load_no_trans">true</property>
+    <property name="hibernate.jdbc.batch_size">27</property>
+    <!-- Disable the second-level cache -->
+    <property name="hibernate.cache.use_second_level_cache">false</property>
+    <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+    <property name="current_session_context_class">thread</property>
+    <!-- configuration pool via c3p0-->
+    <property name="hibernate.c3p0.min_size">5</property>
+    <property name="hibernate.c3p0.max_size">20</property>
+    <property name="hibernate.c3p0.timeout">300</property>
+    <!-- seconds -->
+    <property name="hibernate.c3p0.max_statements">50</property>
+    <property name="hibernate.c3p0.idle_test_period">300</property>
+    <!-- seconds -->
+    <property name="hibernate.c3p0.testConnectionOnCheckout">false</property>
+    <!-- encoding -->
+    <property name="hibernate.connection.CharSet">utf8</property>
+    <property name="hibernate.connection.characterEncoding">utf8</property>
+    <property name="hibernate.connection.useUnicode">true</property>
+    <property name="hibernate.hbm2ddl.auto">update</property>
+    <mapping class="com.pradettisanti.payroll.pojoh.ActaNotarial"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.Agremiado"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.Bitacora"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.BitacoraPK"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.Cliente"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.Contratista"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.Contrato"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.ContratoEmpresas"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.DatosBancarios"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.DatosBeneficiario"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.DatosDomicilio"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.DatosLaborales"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.DatosLaboralesPK"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.DatosPersonales"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.Documento"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.DocumentoPK"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.DocumentosBaja"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.DocumentosBajaPK"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.EmpresasDomicilio"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.EmpresasDomicilioPK"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.Incidencia"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.IncidenciaPK"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.Modulo"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.MotivoBaja"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.Notificaciones"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.Permiso"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.PoderLegal"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.Recibo"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.RelacionContrato"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.Rol"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.Sindicato"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.SolicitudBaja"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.SolicitudBajaPK"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.SolicitudRenovacionContrato"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.SolicitudRenovacionContratoPK"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.StatusAgremiado"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.TipoActa"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.TipoContrato"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.TipoDocumento"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.TipoDocumentoPK"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.TipoDomicilio"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.TipoFiniquito"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.TipoIncidencia"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.TipoNomina"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.Usuario"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.ZonaSm"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.EsquemaPago"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.ReciboSolicitado"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.SalarioUnicoProfesional"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.TipoSalarioUnicoProfesional"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.CatalogoDocumental"/> 
+    <mapping class="com.pradettisanti.payroll.pojoh.EsquemaCampo"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.CamposFomulario"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.BitacoraFondoAhorro"/>
+    <mapping class="com.pradettisanti.payroll.pojoh.PeriodoFA"/>
+  </session-factory>
+</hibernate-configuration>

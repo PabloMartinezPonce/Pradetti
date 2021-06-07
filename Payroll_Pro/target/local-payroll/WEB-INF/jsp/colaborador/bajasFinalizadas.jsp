@@ -68,7 +68,12 @@
                                     <div class="btn-group" role="group" aria-label="...">
                                     <button type="button" class="btn btn-default redireccionar-td" value="${pageContext.request.contextPath}/colaborador/baja-sin-firmar/${colaborador.idAgremiado}.htm" title="Pasar a bajas sin firmar">
                                         <span class="glyphicon glyphicon-paste" aria-hidden="true"></span>
-                                    </button>
+                                        </button>
+                                    </div>
+                                    <div class="btn-group" role="group" aria-label="...">
+                                        <button type="button" class="btn btn-default redireccionar-td" value="${pageContext.request.contextPath}/colaborador/reactivar-expediente/${colaborador.idAgremiado}.htm" title="Reactivar colaborador">
+                                            <span class="glyphicon glyphicon-level-up" aria-hidden="true"></span>
+                                        </button>
                                     </div>
                                 </td>
         <sec:authorize access="hasAnyRole('Descartar_Expediente')">  

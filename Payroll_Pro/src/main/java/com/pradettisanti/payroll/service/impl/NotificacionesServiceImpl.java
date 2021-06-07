@@ -7,6 +7,7 @@ package com.pradettisanti.payroll.service.impl;
 
 import com.pradettisanti.payroll.pojoh.Agremiado;
 import com.pradettisanti.payroll.pojoh.Cliente;
+import com.pradettisanti.payroll.pojoh.Documento;
 import com.pradettisanti.payroll.pojoh.Notificaciones;
 import com.pradettisanti.payroll.pojoh.Recibo;
 import com.pradettisanti.payroll.pojoh.ReciboSolicitado;
@@ -172,7 +173,7 @@ public class NotificacionesServiceImpl implements NotificacionesService {
     }
 
     @Override
-    public void expedientePorCompletar(Agremiado colaborador, Date fechaAlta) {
+    public void expedienteSinContrato(Agremiado colaborador, Date fechaAlta) {
         String subject = "V.°B.° DE EXPEDIENTE - "+colaborador.getDatosPersonales().getNombre().toUpperCase()+' '
                                                                                     +colaborador.getDatosPersonales().getApellidoPaterno().toUpperCase()+' '
                                                                                     +((colaborador.getDatosPersonales().getApellidoMaterno()==null)?"":colaborador.getDatosPersonales().getApellidoMaterno().toUpperCase())+" ("
@@ -189,7 +190,7 @@ public class NotificacionesServiceImpl implements NotificacionesService {
             emailService.enviarCorreo(usuario.getCorreoElectronico(), subject, msj);
         });
     }
-
+    
     @Override
     public void altaExitosa(Agremiado colaborador, Date fechaAlta) {
         String subject = "PROCESO DE ALTA EXITOSA - "+colaborador.getDatosPersonales().getNombre().toUpperCase()+' '
@@ -649,6 +650,25 @@ public class NotificacionesServiceImpl implements NotificacionesService {
                                                                                     +"\", se paso al apartado de <b>'Bajas sin firma'</b> debido a que no se cuenta con las firmas para poder procesar su baja."
                                                                                     +"<br>Favor de revisar el sistema para seguir con el proceso.<br>Gracias,";
         List<Usuario> usuariosParaCorreo = getUsuariosParaCorreo(colaborador.getDatosLaborales().getClienteObj(), "BAJA SIN FRIMAR");
+        usuariosParaCorreo.stream().forEach((usuario) -> {
+            emailService.enviarCorreo(usuario.getCorreoElectronico(), subject, msj);
+        });
+    }
+
+    @Override
+    public void expedienteIncompleto(Agremiado colaborador, Date fechaAlta) {
+        String subject = "REACTIVACIÓN DEL EXPEDIENTE - "+colaborador.getDatosPersonales().getNombre().toUpperCase()+' '
+                                                                                    +colaborador.getDatosPersonales().getApellidoPaterno().toUpperCase()+' '
+                                                                                    +((colaborador.getDatosPersonales().getApellidoMaterno()==null)?"":colaborador.getDatosPersonales().getApellidoMaterno().toUpperCase())+" ("
+                                                                                    +getFechaCorta(fechaAlta)+" - "
+                                                                                    +colaborador.getDatosLaborales().getClienteObj().getNombreEmpresa().toUpperCase()+")";
+        String msj = "Buen día,<br>Se notifica que el colaborador \""+colaborador.getDatosPersonales().getNombre().toUpperCase()+' '
+                                                                                    +colaborador.getDatosPersonales().getApellidoPaterno().toUpperCase()+' '
+                                                                                    +((colaborador.getDatosPersonales().getApellidoMaterno()==null)?"":colaborador.getDatosPersonales().getApellidoMaterno().toUpperCase())
+                                                                                    +"\" del cliente \""+colaborador.getDatosLaborales().getClienteObj().getNombreEmpresa().toUpperCase()
+                                                                                    +"\", se ha reactivado y ahora se encuentra en el apartado de <b>'Expedientes por completar'</b>. Con fecha de alta: "+getFechaCorta(fechaAlta)+'.'
+                                                                                    +"<br>Favor de revisar el sistema para seguir con el proceso.<br>Gracias,";
+        List<Usuario> usuariosParaCorreo = getUsuariosParaCorreo(colaborador.getDatosLaborales().getClienteObj(), "REACTIVACIÓN DE EXPEDIENTE");
         usuariosParaCorreo.stream().forEach((usuario) -> {
             emailService.enviarCorreo(usuario.getCorreoElectronico(), subject, msj);
         });

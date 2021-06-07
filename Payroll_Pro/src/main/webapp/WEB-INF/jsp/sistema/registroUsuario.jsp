@@ -55,6 +55,14 @@
                 </select>
             </div>
         </div>
+<!--
+            <div class="col-xs-3 col-xs-12 col-md-6">
+                <div class="input-group">
+                    <span class="input-group-addon">Asignación automática de nuevos clientes</span>
+                    <input ${model.datosPersonales.hijos.equalsIgnoreCase("Sí") ? 'checked="checked"' : ''} value='Sí' type="checkbox" data-toggle="toggle" data-on="Sí" data-off="No" data-onstyle="success" data-offstyle="default" class="form-control">
+                </div>
+            </div>-->
+
             <div class="col-xs-12 lnbrk">
                 <input type="hidden" id="clntsPrGrgr" value="" name="clntsPrGrgr">
             </div>

@@ -692,6 +692,8 @@
                             </button>
                         </div>
                     </div>
+                    
+                    
                     <div class="sec-body">
                         <div class="row">
                             <table id="tableDocs" class="table table-hover">
@@ -700,6 +702,7 @@
                                     <th></th>
                                     <th>Documento</th>
                                     <th>Ver</th>
+                                    <th>Descargar</th>
                                 </tr>
                             </thead>                         
                             <tbody id="innerTableDocs">         
@@ -711,13 +714,27 @@
                                                     <button type="button" class="btn btn-default redireccionarVentana" value="${pageContext.request.contextPath}/colaborador/ver-documentos/${documento.tipoDocumentoObj.idTipoDocumento}/${model.agremiado.idAgremiado}.htm" title="Ver documento">
                                                         <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
                                                     </button>
-                                                </td>
+                                            </td>
+                                            <td>
+                                                    <button type="button" class="btn btn-default redireccionarVentana" value="${pageContext.request.contextPath}/colaborador/descargar-documento/${documento.tipoDocumentoObj.idTipoDocumento}/${model.agremiado.idAgremiado}.htm" title="Descargar documento">
+                                                        <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
+                                                    </button>
+                                            </td>
                                         </tr> 
                                 </c:forEach>
                         </tbody>                              
                             </table>
                         </div>
-                    </div>
+                        <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-xs-12 col-md-4">
+                             <button type="button" class="btn btn-danger redireccionarVentana" value="${pageContext.request.contextPath}/colaborador/documentos-zip/${model.agremiado.idAgremiado}.htm" title="Descargar todos los documentos">
+                                <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>&nbsp;Descargar todos los documentos
+                            </button>
+                        </div>
+                        <div class="col-md-4">
+                           
+                        </div>
                     <div class="sec-footer"></div>
                 </section>
                 <section class="section" id="Observaciones">

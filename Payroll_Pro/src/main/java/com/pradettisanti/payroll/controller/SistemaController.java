@@ -2229,7 +2229,7 @@ public class SistemaController {
                 }
             }
             usuario.setClienteList(clientes);
-             usuario.setModificado( new java.util.Date() );
+            usuario.setModificado( new java.util.Date() );
             usuarioService.setUsuario( usuario );
             if(usuario.getIdUsuario() != null){
                 LOGGER.info("[Controller, Sistema] Se ingresó correctamente la información de un usuario "+usuario+" Se procede a relacionar el usuario con los clientes indicados en caso de ser requerido");

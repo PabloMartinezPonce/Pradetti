@@ -210,8 +210,8 @@ public class EmailServiceImpl implements EmailService {
     private final String[] KEYS = new String[]{"mail.transport.protocol","mail.smtp.host","mail.smtp.port","mail.smtp.auth","mail.smtp.starttls.enable","mail.smtp.ssl.enabled"};
     private final String[] VALUES = new String[]{"smtp","smtp.sendgrid.net","587","true"};
     private final String EMAIL_ADDRESS = "pradettisystem@pradettisanti.com.mx";
-    private final String OWNER = "EmmanuelRoman-ITS";
-    private final String PASSWORD = "itseekers00";
+    private final String OWNER = "apikey";
+    private final String PASSWORD = "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";
 
     private class SMTP_AUTHENTICATOR extends Authenticator{
         @Override

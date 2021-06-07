@@ -111,6 +111,9 @@
                 <prop key="colaborador/cd-contrato/{contrato}.htm">keyColaborador </prop>
                 <prop key="colaborador/registrar-adecuacion-colaborador.htm">keyColaborador </prop>
                 <prop key="colaborador/documentos-del-fondo-ahorro/{IdAgremiado}.htm">keyColaborador </prop>
+                <prop key="colaborador/reactivar-expediente/{idAgremiado}.htm">keyColaborador </prop>
+                <prop key="colaborador/descargar-documento/{tipoDocumento}/{idAgremiado}.htm">keyColaborador </prop>
+                <prop key="colaborador/documentos-zip/{idAgremiado}.htm">keyColaborador </prop>
                 
                 <!-- Cliente Controller -->
                 <prop key="cliente/clientes.htm">keyClientes</prop>

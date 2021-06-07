@@ -1528,10 +1528,13 @@ public class AgremiadoDaoImpl implements AgremiadoDao {
         HibernateUtl.buildSessionFactory();
         Session session = HibernateUtl.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
+        Short idStatus = 8;
         try {
-            Criteria criteria = session.createCriteria(DatosPersonales.class);
-            criteria.add(Restrictions.eq("curp", curp));
-           // criteria.add(Restrictions.eq("rfc", rfc));
+            Criteria criteria = session.createCriteria(DatosPersonales.class, "dp")
+                    .setFetchMode("dp.agremiadoObj", FetchMode.JOIN)
+                    .createAlias("dp.agremiadoObj", "ag");
+            criteria.add(Restrictions.eq("curp", curp))
+                    .add(Restrictions.ne("ag.statusAgremiado", idStatus));
             datosPersonales = (DatosPersonales) criteria.uniqueResult();
         } catch (HibernateException he) {
             LOGGER.error(CONSOLE_MESSAGE+" - Error en la capa de acceso a datos", he);
@@ -1547,10 +1550,13 @@ public class AgremiadoDaoImpl implements AgremiadoDao {
         HibernateUtl.buildSessionFactory();
         Session session = HibernateUtl.getSessionFactory().getCurrentSession();
         Transaction tx = session.beginTransaction();
+        Short idStatus = 8;
         try {
-            Criteria criteria = session.createCriteria(DatosPersonales.class);
-            //criteria.add(Restrictions.eq("curp", curp));
-            criteria.add(Restrictions.eq("rfc", rfc));
+            Criteria criteria = session.createCriteria(DatosPersonales.class, "dp")
+                    .setFetchMode("dp.agremiadoObj", FetchMode.JOIN)
+                    .createAlias("dp.agremiadoObj", "ag");
+            criteria.add(Restrictions.eq("rfc", rfc))
+                    .add(Restrictions.ne("ag.statusAgremiado", idStatus));
             datosPersonales = (DatosPersonales) criteria.uniqueResult();
         } catch (HibernateException he) {
             LOGGER.error(CONSOLE_MESSAGE+" - Error en la capa de acceso a datos", he);

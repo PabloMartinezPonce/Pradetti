@@ -7,8 +7,10 @@ package com.pradettisanti.payroll.service;
 
 import com.pradettisanti.payroll.pojoh.Agremiado;
 import com.pradettisanti.payroll.pojoh.Cliente;
+import com.pradettisanti.payroll.pojoh.Documento;
 import com.pradettisanti.payroll.pojoh.Recibo;
 import com.pradettisanti.payroll.pojoh.Usuario;
+import java.io.File;
 import java.util.Date;
 import java.util.List;
 
@@ -22,7 +24,8 @@ public interface NotificacionesService {
     public void solicitudFondoAhorro(Agremiado colaborador,Date fechaAlta);
     public void bajasSolicitada(Agremiado colaborador, Date fechaBaja);
     public void expedienteConObservaciones(Agremiado  colaborador);
-    public void expedientePorCompletar(Agremiado colaborador,Date fechaAlta);
+    public void expedienteSinContrato(Agremiado colaborador,Date fechaAlta);
+    public void expedienteIncompleto(Agremiado colaborador,Date fechaAlta);
     public void bajaSinFirmar(Agremiado colaborador,Date fechaAlta);
     public void altaExitosa(Agremiado colaborador,Date fechaAlta);
     public void correccionesRealizadas(Agremiado colaborador,Date fechaAlta);
@@ -41,6 +44,7 @@ public interface NotificacionesService {
     public void reciboDeNomina(List<Recibo> recibos, Usuario usuario); //Se actualiza firma para que reciba usuario de tipo Usuario
     public boolean reciboDeNominaZIp(String correo, List<Recibo> recibos, Cliente cliente,  String Desde , String Hasta); //Se actualiza firma para que devuelva un boolean
     public boolean reciboDeNomina(String correo, List<Recibo> recibos, Cliente cliente,  String Desde , String Hasta); //Se actualiza firma para que devuelva un boolean
+   // public File documentosZip( List<Documento> documentos, Agremiado agremiado);
     public void nuevoUsuario(Usuario usuario);
     public void rechazoDuranteAlta(Agremiado colaborador, String origenDeRechazo, String notificacion);
 }

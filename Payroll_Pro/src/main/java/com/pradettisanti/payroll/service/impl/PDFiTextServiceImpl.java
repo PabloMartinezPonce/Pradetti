@@ -6747,31 +6747,38 @@ public class PDFiTextServiceImpl implements PDFiTextService {
 "            width: 33%;\n" +
 "        }\n" +
 "        u{font-size: 15px;}" ;
-private final String adhesionSindical = "<p class=\"text-justify\"><b><h2> %SNDCTACRNMM </h2></b></p>\n" +
-"        <br/>\n" +
-"        <br/>\n" +
-"        <p class=\"text-right\"><b>Asunto:&nbsp;</b>Solicitud de adhesión al sindicato.</p>\n" +
-"        <br/>\n" +
-"        <br/>\n" +
-"        <p class=\"text-justify\">\n" +
-"            La que suscribe <b> %NombrePaternoMaterno </b>, trabajador de <b> %NombreCliente </b>, con número de seguridad social <b> %NSS </b>, señalando como domicilio el ubicado en la <b>CALLE %Calle , NÚMERO  %## , COLONIA %Colonia , C.P. %CP </b>; por medio del presente le hago llegar mi solicitud para pertenecer al sindicato que dignamente representa, así como acatar y cumplir todas y cada una de las cláusulas y artículos contenidos en el contrato colectivo de trabajo del&nbsp; %SNDCTACRNMN\n" +
-"        </p>\n" +
-"        <br/>\n" +
-"        <br/>\n" +
-"        <p class=\"text-left\">Sin más por el momento, y en espera de la respuesta de mi solicitud reciba un cordial saludo.</p>\n" +
-"        <br/>\n" +
-"        <br/>\n" +
-"        <p class=\"text-right\">Oaxaca de Juárez, %Fch .</p>\n" +
-"        <br/>\n" +
-"        <br/>\n" +
-"        <br/>\n" +
-"        <br/>\n" +
-"        <p class=\"text-center\"><b>ATENTAMENTE</b></p>\n" +
-"        <br/>\n" +
-"        <br/>\n" +
-"        <br/>\n" +
-"        <br/>\n" +
-"        <p class=\"text-center\"><b>C. %NombrePaternoMaterno </b></p>";
+private final String adhesionSindical =    "<p class=\"text-right\">Oaxaca de Juárez, %Fch.</p>\n" +
+   "        <br/>\n" +
+   "        <p class=\"text-justify\"><b><h2>C. SECRETARIO(A) GENERAL DEL SINDICATO Y DEL COMITÉ EJECUTIVO DEL %SNDCTACRNMM </h2></b></p>\n" +
+   "        <br/>\n" +
+   "        <br/>\n" +
+   "        <p class=\"text-ustify\"><b>PRESENTE.&nbsp;</b></p>\n" +
+   "        <br/>\n" +
+   "        <br/>\n" +
+   "        <p class=\"text-justify\">\n" +
+   "            La que suscribe <b>C. %NombrePaternoMaterno </b> promoviendo por mi propio derecho, declaro bajo protesta de decir verdad que cumplo con los requisitos de ingreso que señala el artículo 8 (ocho) de sus Estatutos, motivo por el cual solicito el ingreso a la asociación sindical que representa, expresando mi voluntad de sujetarme en todo a sus Estatutos y a las Estipulaciones del Contrato de Trabajo, así como de cumplir sus normas, y acatar las decisiones de los Congresos o Asambleas que se celebren con motivo de sus propias actividades de estudio, mejoramiento y defensa de los intereses de los trabajadores agremiados.\n" +
+   "        </p>\n" +
+   "        <br/>\n" +
+   "        <p class=\"text-justify\">\n" +
+   "            En este mismo acto declaro bajo protesta de decir verdad que no he sido expulsado de otra Agrupación Obrera por faltas graves, y que no pertenezco a ningún sindicato, así mismo que comparto sus ideales y sus formas de trabajo en beneficio de la clase obrera por lo que tengo interés en pertenecer a esta asociación.\n" +
+   "        </p>\n" +
+   "        <br/>\n" +
+   "        <p class=\"text-justify\">\n" +
+   "            Me avalan para realizar esta solicitud, los miembros que aparecen al calce de la presente, lo cual se acredita con el estampamiento de sus firmas.\n" +
+   "        </p>\n" +
+   "        <br/>\n" +
+   "        <br/>\n" +
+   "        <br/>\n" +
+   "        <br/>\n" +
+   "        <br/>\n" +
+   "        <br/>\n" +
+   "        <br/>\n" +
+   "        <p class=\"text-center\"><b>ATENTAMENTE</b></p>\n" +
+   "        <br/>\n" +
+   "        <br/>\n" +
+   "        <br/>\n" +
+   "        <br/>\n" +
+   "        <p class=\"text-center\"><b>C. %NombrePaternoMaterno </b></p>";
 private final BaseColor RED = new BaseColor(210,3,44);
 private final BaseColor GREY = new BaseColor(67,64,65);  
 private final BaseColor WHITE = new BaseColor(255,255,255);      

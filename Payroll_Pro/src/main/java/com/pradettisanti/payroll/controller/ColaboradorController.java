@@ -29,6 +29,7 @@ import com.pradettisanti.payroll.pojoh.Modulo;
 import com.pradettisanti.payroll.pojoh.MotivoBaja;
 import com.pradettisanti.payroll.pojoh.PeriodoFA;
 import com.pradettisanti.payroll.pojoh.Permiso;
+import com.pradettisanti.payroll.pojoh.Recibo;
 import com.pradettisanti.payroll.pojoh.Rol;
 import com.pradettisanti.payroll.pojoh.SalarioUnicoProfesional;
 import com.pradettisanti.payroll.pojoh.Sindicato;
@@ -59,6 +60,8 @@ import com.pradettisanti.payroll.service.PeriodoFondoAhorroService;
 import com.pradettisanti.payroll.service.SindicatoService;
 import com.pradettisanti.payroll.service.SolicitudBajaService;
 import com.pradettisanti.payroll.service.UsuarioService;
+import com.pradettisanti.payroll.service.ZipService;
+//import com.pradettisanti.payroll.service.documentosZip;
 import com.pradettisanti.payroll.service.ZonasSmService;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -66,9 +69,11 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.URLConnection;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.ParseException;
@@ -86,6 +91,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -275,6 +282,15 @@ public class ColaboradorController {
     
     @Autowired
     private ExcelReportesService excelReportesService;
+    
+    @Autowired
+    private ZipService zipService;
+    public ZipService getZipService(){
+        return zipService;
+    }
+    public void setZipService(ZipService zipService){
+        this.zipService = zipService;
+    }
     
     /**
      * Controlador encargado de devolver la vista de los colaboradores en el status solicitado
@@ -1364,7 +1380,7 @@ public class ColaboradorController {
                 agremiadoService.setAgremiado(agremiado);
                 setInformacionEnVentana(map, 0, MODULO, "Se le ha dado el V.°B.° a <b>"+datosPersonales.getNombre().toUpperCase()+" "+datosPersonales.getApellidoPaterno().toUpperCase()+" "+((datosPersonales.getApellidoMaterno()==null)?"":datosPersonales.getApellidoMaterno().toUpperCase())+"</b>.");   
                 setBitacora("Cambio de estado", "Se le ha dado el V.°B.° a "+datosPersonales.getNombre().toUpperCase()+" "+datosPersonales.getApellidoPaterno().toUpperCase()+" "+((datosPersonales.getApellidoMaterno()==null)?"":datosPersonales.getApellidoMaterno().toUpperCase())+".",request);
-                notificacionesService.expedientePorCompletar(agremiado, datosLaborales.getFechaInicioContrato());
+                notificacionesService.expedienteSinContrato(agremiado, datosLaborales.getFechaInicioContrato());
             }else{
                 List<Sindicato> sindicatos = sindicatoService.getSindicatosByNomCorto();
                 map.put("sindicatos", sindicatos);
@@ -1381,6 +1397,173 @@ public class ColaboradorController {
         return new ModelAndView("colaborador/vistoBueno", "model", map);
     }
     
+    /**
+     * Controlador encargado de reactivar un colaborador desde bajas finalizadas
+     *
+     * @param idAgremiado Numero entero que contiene el ide de un colaborador
+     * @param request Variable que maneja las peticiones
+     * @param response Variables que maneja las respuestas
+     * @return ModelAndView
+     */
+    @RequestMapping(value = "colaborador/reactivar-expediente/{idAgremiado}.htm", method = RequestMethod.GET)
+    public ModelAndView setReactivarColaborador(@PathVariable("idAgremiado") Integer idAgremiado, HttpServletRequest request, HttpServletResponse response) {
+        LOGGER.info(LOGGER_PREFIX + "Se solicita la reactivación del colaborador {" + idAgremiado + '}');
+
+        Map<String, Object> map = new HashMap<>();
+
+        try {
+            Agremiado agremiado = agremiadoService.getAgremiado(idAgremiado);
+            LOGGER.error("Objeto del agremiado " + agremiado);
+            DatosPersonales datosPersonales = agremiado.getDatosPersonales();
+            DatosLaborales datosLaborales = agremiado.getDatosLaborales();
+
+            short status = getStatus("Expediente Incompleto");
+            agremiado.setStatusAgremiado(status);
+            agremiado.setModificado(new Date());
+            agremiadoService.setAgremiado(agremiado);
+            setInformacionEnVentana(map, 0, MODULO, "Se ha enviado a Expedientes por completar a <b>" + datosPersonales.getNombre().toUpperCase() + " " + datosPersonales.getApellidoPaterno().toUpperCase() + " " + ((datosPersonales.getApellidoMaterno() == null) ? "" : datosPersonales.getApellidoMaterno().toUpperCase()) + "</b>.");
+            setBitacora("Cambio de estado", "Se ha enviado a Expedientes por completar a " + datosPersonales.getNombre().toUpperCase() + " " + datosPersonales.getApellidoPaterno().toUpperCase() + " " + ((datosPersonales.getApellidoMaterno() == null) ? "" : datosPersonales.getApellidoMaterno().toUpperCase()) + ".", request);
+            notificacionesService.expedienteIncompleto(agremiado, datosLaborales.getFechaInicioContrato());
+
+        } catch (Exception e) {
+            LOGGER.info(LOGGER_PREFIX + "Ocurrio un problema al intentar reactivar al colaborador {" + idAgremiado + "} --> " + e.getMessage());
+            setInformacionEnVentana(map, 1, MODULO, "Ocurrio un problema al intentar <b>reactivar</b> al colaborador.");
+        }
+
+        map.put("Colaboradores", getAgremiadosByStatus("Expediente Incompleto"));
+        return new ModelAndView("colaborador/expedientesPorCompletar", "model", map);
+    }
+
+    /**
+     * Controlador encargado de la descarga de un documento individualmente
+     *
+     * @param idAgremiado Numero entero que contiene el ide de un colaborador
+     * @param request Variable que maneja las peticiones
+     * @param response Variables que maneja las respuestas
+     * @return ModelAndView
+     */
+    @RequestMapping(value = "colaborador/descargar-documento/{tipoDocumento}/{idAgremiado}.htm", method = RequestMethod.GET)
+    public void getDescargaDocumento(@PathVariable("tipoDocumento") Integer tipoDoc, @PathVariable("idAgremiado") Integer idAgremiado, HttpServletRequest request, HttpServletResponse response) {
+        LOGGER.info(LOGGER_PREFIX + "Se solicitan el documento " + tipoDoc + " del agremiado " + idAgremiado);
+
+        try {
+            TipoDocumento tipoDocumento = agremiadoService.getTipoDocumento(tipoDoc);
+            Agremiado agremiado = agremiadoService.getAgremiado(idAgremiado);
+            DatosPersonales datosPersonales = agremiado.getDatosPersonales();
+            Documento documento = agremiadoService.getDocumento(agremiado, tipoDocumento);
+            if ((documento != null) && (documento.getUrlDocumento() != null)) {
+                String urlDocumento = documento.getUrlDocumento();
+                File descargarFileFTP = ftpService.descargarFileFTP(urlDocumento);
+                String fileName = "";
+                if (urlDocumento.contains("\\")) {
+                    int indx = urlDocumento.lastIndexOf("\\");
+                    fileName = urlDocumento.substring(indx);
+                } else {
+                    int indx = urlDocumento.lastIndexOf("/");
+                    fileName = urlDocumento.substring(indx);
+                }
+                InputStream is = new FileInputStream(descargarFileFTP);
+                response.setContentType("application/x-download");
+                response.setHeader("Content-disposition", "attachment; filename=" + fileName);
+                OutputStream sos = response.getOutputStream();
+                IOUtils.copy(is, sos);
+                sos.flush();
+
+                ServletOutputStream out = response.getOutputStream();
+                BufferedOutputStream bos = new BufferedOutputStream(out);
+
+                bos.close();
+                out.close();
+            }
+        } catch (NumberFormatException nfe) {
+            LOGGER.error(LOGGER_PREFIX + "Ocurrio un problema al momento de intentar obtener el documento --NumberFormatException-- {" + idAgremiado + ',' + tipoDoc + "}  --> " + nfe.getMessage());
+        } catch (FileNotFoundException fnfe) {
+            LOGGER.error(LOGGER_PREFIX + "El archivo no puede ser generado para su visualización --FileNotFoundException-- --> " + fnfe.getMessage());
+        } catch (IOException ioe) {
+            LOGGER.error(LOGGER_PREFIX + "El archivo no puede ser generado para su visualización --IOException-- --> " + ioe.getMessage());
+        } catch (Exception e) {
+            LOGGER.error(LOGGER_PREFIX + "Ocurrio un problema al momento de intentar obtener el documento {" + idAgremiado + ',' + tipoDoc + "}  --> " + e.getMessage());
+        }
+    }
+
+    /**
+     * Controller encargado de generar los pdf y almacenarlos en un solo archivo
+     * zip
+     *
+     * @param request Variable encargada de manejar las peticiones
+     * @param response Variable encargada de manejar las respuestas
+     */
+    @RequestMapping(value = "colaborador/documentos-zip/{idAgremiado}.htm", method = RequestMethod.GET)
+    public void generarDocumentosZIP(@PathVariable("idAgremiado") Integer idAgremiado, HttpServletRequest request, HttpServletResponse response) throws FileNotFoundException, IOException {
+        LOGGER.info("[Controller, Colaborador] Se solicita la generación de ZIP con documentos del colaborador.");
+        try{
+            Agremiado agremiado = agremiadoService.getAgremiado(idAgremiado);
+            Map<String, byte[]> documentos = new HashMap<String, byte[]>();
+            for (Documento documento : agremiado.getDocumentoList()) {
+                if (documento.getUrlDocumento() != null) {
+                    String urlDocumento = documento.getUrlDocumento();
+                    File descargarFileFTP = ftpService.descargarFileFTP(urlDocumento);
+                    String fileName = "";
+                    if (urlDocumento.contains("\\")) {
+                        int indx = urlDocumento.lastIndexOf("\\");
+                        fileName = urlDocumento.substring(indx);
+                    } else {
+                        int indx = urlDocumento.lastIndexOf("/");
+                        fileName = urlDocumento.substring(indx);
+                    }
+                    InputStream is = new FileInputStream(descargarFileFTP);
+                    byte[] bytes = IOUtils.toByteArray(is);
+                    documentos.put(fileName.replace("/", ""), bytes);
+                }
+            }
+            try{
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ZipOutputStream zos = new ZipOutputStream(baos);
+                zos.setLevel(ZipOutputStream.STORED);
+
+                for (Map.Entry<String, byte[]> recibo : documentos.entrySet()) {
+                    ZipEntry zipEntry = new ZipEntry(recibo.getKey());
+                    zos.putNextEntry(zipEntry);
+                    zos.write(recibo.getValue());
+                    zos.closeEntry();
+                }
+                zos.close();
+                baos.close();
+                String subject = "Documentos_de_" + "_"+idAgremiado.toString() + "_"+agremiado.getDatosPersonales().getNombre() + "_" + agremiado.getDatosPersonales().getApellidoPaterno() + "_"+agremiado.getDatosPersonales().getApellidoMaterno() + ".zip";
+                try {
+                    File documentosZIP = new File(subject);
+                    FileOutputStream fos = new FileOutputStream(documentosZIP);
+                    fos.write(baos.toByteArray());
+                    fos.flush();
+                    InputStream is = new FileInputStream(documentosZIP);
+                    response.setContentType("application/x-download");
+                    response.setHeader("Content-disposition", "attachment; filename=" + subject);
+                    OutputStream sos = response.getOutputStream();
+                    IOUtils.copy(is, sos);
+                    sos.flush();
+
+                    ServletOutputStream out = response.getOutputStream();
+                    BufferedOutputStream bos = new BufferedOutputStream(out);
+
+                    bos.close();
+                    out.close();
+                } catch (Exception e) {
+                    LOGGER.error("[Controller, Colaborador] Ocurrió un error al momento de descargar el archivo .zip --> " + e);
+
+                }
+            }
+            catch (Exception e){
+                LOGGER.error("[Controller, Colaborador] Ocurrió un error al crear archivo .zip --> " + e);
+            }
+        }
+        catch (Exception e){
+            LOGGER.error("[Controller, Colaborador] No se encontraron documentos --> " + e);
+
+        }
+
+    }
+
+ 
     /**
      * Controlador encargado de devolver la vista con los detalles para seleccionar el periodo de fondo de ahorro de un colaborador
      * @param idAgremiado Numero entero que contiene el id de un colaborador
@@ -1406,7 +1589,7 @@ public class ColaboradorController {
 //                agremiadoService.setAgremiado(agremiado);
 //                setInformacionEnVentana(map, 0, MODULO, "Se le ha dado el V.°B.° a <b>"+datosPersonales.getNombre().toUpperCase()+" "+datosPersonales.getApellidoPaterno().toUpperCase()+" "+((datosPersonales.getApellidoMaterno()==null)?"":datosPersonales.getApellidoMaterno().toUpperCase())+"</b>.");   
 //                setBitacora("Cambio de estado", "Se le ha dado el V.°B.° a "+datosPersonales.getNombre().toUpperCase()+" "+datosPersonales.getApellidoPaterno().toUpperCase()+" "+((datosPersonales.getApellidoMaterno()==null)?"":datosPersonales.getApellidoMaterno().toUpperCase())+".",request);
-//                notificacionesService.expedientePorCompletar(agremiado, datosLaborales.getFechaInicioContrato());
+//                notificacionesService.expedienteSinContrato(agremiado, datosLaborales.getFechaInicioContrato());
 //            }else{
                 //List<PeriodoFA> periodos = pFAService.getPeriodosFondoAhorro(); //aquí entran los periodos del contrato entre empresas
                 ContratoEmpresas contratoEmpresa;
@@ -1454,7 +1637,7 @@ public class ColaboradorController {
                 agremiado.setStatusAgremiado(status);
                 agremiado.setModificado(new Date());
                 agremiadoService.setAgremiado(agremiado);
-                setInformacionEnVentana(map, 0, MODULO, "El colaborador <b>"+datosPersonales.getNombre()+" "+datosPersonales.getApellidoPaterno()+" "+((datosPersonales.getApellidoMaterno()==null)?"":datosPersonales.getApellidoMaterno())+"</b> ha cambiado exitosamente de estado");
+                setInformacionEnVentana(map, 0, MODULO, "El colaborador <b>"+datosPersonales.getNombre()+" "+datosPersonales.getApellidoPaterno()+" "+((datosPersonales.getApellidoMaterno()==null)?"":datosPersonales.getApellidoMaterno())+"</b> ha cambiado exitosamente a bajas sin firmar");
                 setBitacora("Cambio de estado", "Cambio el estado del colaborador "+datosPersonales.getNombre()+" "+datosPersonales.getApellidoPaterno()+" "+((datosPersonales.getApellidoMaterno()==null)?"":datosPersonales.getApellidoMaterno())+" a bajas sin firmar.", request);
                 notificacionesService.bajaSinFirmar(agremiado, datosLaborales.getFechaInicioContrato());
             
@@ -1633,7 +1816,7 @@ public class ColaboradorController {
             
             setInformacionEnVentana(map, 0, MODULO, "Se le ha asignado a <b>"+datosPersonales.getNombre().toUpperCase()+" "+datosPersonales.getApellidoPaterno().toUpperCase()+" "+((datosPersonales.getApellidoMaterno()==null)?"":datosPersonales.getApellidoMaterno().toUpperCase())+"</b> <br> El sindicato <b>"+sindicato.getNombreCorto()+"</b>.");
             setBitacora("Cambio de estado", "Se le ha dado el V.°B.° a "+datosPersonales.getNombre().toUpperCase()+" "+datosPersonales.getApellidoPaterno().toUpperCase()+" "+((datosPersonales.getApellidoMaterno()==null)?"":datosPersonales.getApellidoMaterno().toUpperCase())+".",request);
-            notificacionesService.expedientePorCompletar(agremiado, datosLaborales.getFechaInicioContrato());
+            notificacionesService.expedienteSinContrato(agremiado, datosLaborales.getFechaInicioContrato());
             
         } catch (Exception e) {
             LOGGER.error(LOGGER_PREFIX+"Ocurrio un problema al intentar dar el visto bueno al colaborador {"+idAgremiadoString+"} --> "+e.getMessage(),e);
@@ -1682,45 +1865,7 @@ public class ColaboradorController {
         return new ModelAndView("colaborador/vistoBueno", "model", map);
     }
     
-//    /**
-//     * Controller encargado de reactivar el colaborador
-//     * @param idAgremiado Numero entero que contiene el id de un colaborador
-//     * @param request Variable que maneja las peticiones
-//     * @param response Variable que maneja las respuestas
-//     * @return ModelAndView
-//     */
-//    @RequestMapping(value = "colaborador/reactivar-colaborador/{idAgremiado}.htm",method = RequestMethod.POST)
-//    public ModelAndView reactivarColaborador(@PathVariable("idAgremiado")Integer idAgremiado, HttpServletRequest request, HttpServletResponse response){
-//        LOGGER.info(LOGGER_PREFIX+"Se solicita la reactivación del colaborador {"+idAgremiado+'}');
-//
-//        Map<String,Object> map = new HashMap<>();
-//        
-//        try {
-//            Agremiado agremiado = agremiadoService.getAgremiado(idAgremiado);
-//            StatusAgremiado statusAgremiado = agremiadoService.getStatusAgremiado(agremiado.getStatusAgremiado());
-//            if(statusAgremiado.getStatus().equalsIgnoreCase("Baja") || statusAgremiado.getStatus().equalsIgnoreCase("Expediente Descartado")){
-//                short status = getStatus("Expediente Incompleto");
-//                agremiado.setStatusAgremiado(status);
-//                agremiado.setModificado(new Date());
-//                agremiado.setObservaciones(getObservaciones(agremiado.getObservaciones(),"El usuarios con correo %U rechazó el alta solicitada."));
-//                agremiadoService.setAgremiado(agremiado);
-//                DatosPersonales datosPersonales = agremiado.getDatosPersonales();
-//                setBitacora("Cambio de status", "Rechazó el alta solicitada de "+datosPersonales.getApellidoPaterno().toUpperCase()+" "+((datosPersonales.getApellidoMaterno()==null)?"":datosPersonales.getApellidoMaterno().toUpperCase())+" "+datosPersonales.getNombre().toUpperCase() +".", request);          
-//                setInformacionEnVentana(map, 0, MODULO, "El alta del colabordor se rechazó con exito.");
-//                notificacionesService.rechazoDuranteAlta(agremiado, "Alta Solicitada", "V.°B.° DE EXPEDIENTE");
-//            }else{
-//                LOGGER.error(LOGGER_PREFIX+"No se puede rechazar el alta debido a que no tiene el status de colaborador correcto {"+idAgremiado+"}.");
-//                setInformacionEnVentana(map, 1, MODULO, "No se puede rechazar el alta del colaborador.");
-//            }
-//            
-//        } catch (Exception e) {
-//                LOGGER.error(LOGGER_PREFIX+"Ocurrió un problema al momento de rechazar una alta solicitada {"+idAgremiado+"} --> "+e.getMessage());
-//                setInformacionEnVentana(map, 1, MODULO, "Hubo un problema al momento de intentar rechazar la solicitud de alta.");
-//        }
-//        map.put("Colaboradores", getAgremiadosByStatus("V.OB.O"));
-//        return new ModelAndView("colaborador/vistoBueno", "model", map);
-//    }
-    
+
     /**
      * Controller encargado de presentar la vista con los documentos que se cargan junto con el contrato
      * @param idAgremiado Numero entero que contiene el id de un colaborador

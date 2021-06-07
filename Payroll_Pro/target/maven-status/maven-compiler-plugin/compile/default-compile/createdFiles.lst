@@ -145,6 +145,7 @@ com\pradettisanti\payroll\service\ContratoService.class
 com\pradettisanti\payroll\service\ContratistaService.class
 com\pradettisanti\payroll\service\impl\EmailServiceImpl$SMTP_AUTHENTICATOR.class
 com\pradettisanti\payroll\pojoh\Usuario.class
+com\pradettisanti\payroll\service\colaborador.class
 com\pradettisanti\payroll\Utility\HibernateUtl.class
 com\pradettisanti\payroll\pojoh\BitacoraFondoAhorro.class
 com\pradettisanti\payroll\pojoh\EsquemaPago.class
